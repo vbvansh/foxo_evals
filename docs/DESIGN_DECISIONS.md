@@ -35,6 +35,8 @@ Each entry: the decision, why, and what it costs.
   - Critical: any single failure blocks the release. These are wrong numbers, missed critical values, diagnoses, leaked data, unsafe diets and unescalated emergencies.
   - Major: the pass rate must stay at or above 90%. Minor: tracked only.
 - **Deterministic checks first; a judge only where code can't decide.** Judges cover tone and clarity, and act as a backup for diagnosis wording and hidden ingredients. They run on a different model family, give reasoning before a binary verdict per criterion, and their prompts are versioned.
+- **New failure modes become new evals.** Doctor v3 summarised a report with a low B12 as "all within range". That is a confident wrong answer, so DOC-10 (critical) was added and the case became regression test 008.
+- **Judge prompts are versioned per judge.** Ome's diagnosis judge is on v2 after v1 treated emergency triage wording ("these could be signs of a stroke, call 112") as a diagnosis. Each run records the judge versions it used.
 - **COACH-02 (doctor's restrictions) is critical but judge-only.**
   *Trade-off:* the release gate depends on the judge being right, which is why calibration against human labels exists.
 - **Leaks and claims are matched differently.**
