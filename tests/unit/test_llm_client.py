@@ -25,7 +25,7 @@ class FakeAPI:
         self.replies = list(replies)
         self.requests: list[dict] = []
 
-    def __call__(self, payload: dict) -> dict:
+    def __call__(self, payload: dict, session_id: str) -> dict:
         self.requests.append(payload)
         return {
             "choices": [{"message": {"content": self.replies.pop(0)}}],
@@ -33,7 +33,7 @@ class FakeAPI:
         }
 
 
-def no_network(payload: dict) -> dict:
+def no_network(payload: dict, session_id: str) -> dict:
     raise AssertionError("replay mode must not call the API")
 
 

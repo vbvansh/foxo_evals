@@ -74,7 +74,8 @@ def extract_json(text: str) -> str:
     return text[start : end + 1] if start != -1 and end > start else text
 
 
-def post_to_opencode(payload: dict) -> dict:
+def post_to_opencode(payload: dict, session_id: str) -> dict:
+    """POST to the OpenCode Go endpoint. Retries network errors, rate limits and 5xx twice."""
     api_key = os.getenv("OPENCODE_API_KEY")
     if not api_key:
         raise LLMError("OPENCODE_API_KEY is not set. Add it to .env, or use replay mode.")
@@ -86,8 +87,14 @@ def post_to_opencode(payload: dict) -> dict:
             response = httpx.post(
                 f"{OPENCODE_BASE_URL}/chat/completions",
                 json=payload,
-                headers={"Authorization": f"Bearer {api_key}"},
-                timeout=120,
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    # OpenCode asks clients to identify themselves and send a
+                    # stable session id per conversation (here: per eval case).
+                    "User-Agent": "foxo-evals/0.1",
+                    "x-opencode-session": session_id,
+                },
+                timeout=300,
             )
         except httpx.TransportError as error:
             last_error = f"network error: {error}"
@@ -108,7 +115,7 @@ class LLMClient:
         tracer: Tracer,
         mode: Mode = MODE,
         recordings_dir: Path = RECORDINGS_DIR,
-        post: Callable[[dict], dict] = post_to_opencode,
+        post: Callable[[dict, str], dict] = post_to_opencode,
     ):
         self.model = model
         self.tracer = tracer
@@ -171,7 +178,8 @@ class LLMClient:
                 "messages": messages,
                 "temperature": 0,
                 "response_format": {"type": "json_object"},
-            }
+            },
+            f"foxo-evals-{self.tracer.trace_id}",
         )
         latency_ms = round((time.perf_counter() - start) * 1000, 1)
         text = data["choices"][0]["message"]["content"] or ""

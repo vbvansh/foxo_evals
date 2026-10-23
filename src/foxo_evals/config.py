@@ -19,14 +19,15 @@ load_dotenv(ROOT / ".env")
 # missing and save it. replay: recordings only, no network, no key needed.
 MODE = os.getenv("FOXO_MODE", "replay")
 
-OPENCODE_BASE_URL = "https://opencode.ai/inference/openai/v1"
+# OpenCode Go subscription endpoint (OpenAI-compatible chat completions).
+OPENCODE_BASE_URL = "https://opencode.ai/inference/go/openai/v1"
 AGENT_MODEL = "deepseek-v4.1-flash"
 # A different model family judges the agents, to reduce self-preference bias.
-JUDGE_MODEL = "mistral-large-4"
+JUDGE_MODEL = "glm-5.3"
 
-# USD per 1M tokens (input, output), from opencode.ai pricing on 2026-10-23.
-# Update if outdated.
+# USD per 1M tokens (input, output), from the OpenCode Go price table on
+# 2026-10-23 (DeepSeek at its peak-hour rate). Update if outdated.
 PRICES = {
     "deepseek-v4.1-flash": (0.30, 1.20),
-    "mistral-large-4": (0.68, 2.09),
+    "glm-5.3": (1.40, 4.40),
 }
