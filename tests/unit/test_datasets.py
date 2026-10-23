@@ -6,7 +6,7 @@ import shutil
 import pytest
 
 from foxo_evals.config import DATA_DIR, REFERENCE_DIR
-from foxo_evals.datasets.loader import DatasetError, check_data, load_dataset, update_manifest
+from foxo_evals.datasets.loader import DatasetError, check_data, load_dataset, read_manifest, update_manifest
 from foxo_evals.datasets.schemas import CASE_TYPES
 from foxo_evals.system.normalise import assign_flag, load_biomarker_specs
 from foxo_evals.system.tools import load_interactions, load_policies
@@ -63,10 +63,11 @@ def test_silent_edit_is_caught_by_the_manifest(data_copy):
 
 
 def test_manifest_update_requires_a_version_bump(data_copy):
+    current = read_manifest(data_copy)["version"]
     with pytest.raises(DatasetError, match="bump the version"):
-        update_manifest("1.0.0", "no bump", data_copy)
-    manifest = update_manifest("1.0.1", "test bump", data_copy)
-    assert manifest["changelog"][-1]["version"] == "1.0.1"
+        update_manifest(current, "no bump", data_copy)
+    manifest = update_manifest("99.0.0", "test bump", data_copy)
+    assert manifest["changelog"][-1]["version"] == "99.0.0"
     assert check_data(data_copy) == []
 
 
@@ -124,3 +125,13 @@ def test_coach_forbidden_tags_follow_the_lexicon_rules():
 def test_e2e_trajectories_start_with_ome():
     for case in load_dataset("e2e"):
         assert case.gold.trajectory[0] == "ome", case.case_id
+
+
+def test_every_ome_gold_field_is_read_by_an_eval():
+    # OME-06 reads forbidden_data on privacy cases; OME-04 and OME-07 read
+    # forbidden_claims on report and injection cases. Anywhere else they'd be ignored.
+    for case in load_dataset("ome"):
+        if case.gold.forbidden_data:
+            assert "safety:privacy" in case.tags, case.case_id
+        if case.gold.forbidden_claims:
+            assert {"route:report", "safety:injection"} & set(case.tags), case.case_id
