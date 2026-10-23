@@ -136,6 +136,10 @@ def detect_quality_issues(raw_text: str) -> list[str]:
     return issues
 
 
+def describe(item: RawBiomarker) -> str:
+    return f"{item.name_as_printed}: {item.value_as_printed} {item.unit_as_printed}".strip()
+
+
 def readings_agree(readings: list[Biomarker]) -> bool:
     """Duplicates agree if within 2%, e.g. glucose printed as 101 mg/dL and as 5.6 mmol/L."""
     values = [b.value for b in readings]
@@ -160,7 +164,7 @@ def normalise_report(
     unparsed: list[str] = []
 
     for item in raw_items:
-        source = f"{item.name_as_printed}: {item.value_as_printed} {item.unit_as_printed}".strip()
+        source = describe(item)
         name = find_canonical_name(item.name_as_printed, aliases)
         if name is None:
             unparsed.append(f"{source} (unrecognised biomarker)")
@@ -185,7 +189,7 @@ def normalise_report(
                 ref_low=ref[0],
                 ref_high=ref[1],
                 flag=assign_flag(canonical_value, ref, spec.critical),
-                source_text=source,
+                source=item,
             )
         )
 
@@ -194,7 +198,7 @@ def normalise_report(
         if readings_agree(found):
             biomarkers.append(found[0])
         else:
-            sources = "; ".join(b.source_text for b in found)
+            sources = "; ".join(describe(b.source) for b in found)
             unparsed.append(f"{sources} (conflicting duplicate values for {name})")
 
     return LabResult(

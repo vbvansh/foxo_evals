@@ -84,7 +84,9 @@ class Biomarker(BaseModel):
     ref_low: float | None
     ref_high: float | None
     flag: Flag
-    source_text: str
+    # Exactly what the LLM read off the report, kept so evals can check that
+    # every number traces back to the printed text.
+    source: RawBiomarker
 
 
 class LabResult(BaseModel):

@@ -1,4 +1,4 @@
-from foxo_evals.system.schemas import Biomarker, LabResult
+from foxo_evals.system.schemas import Biomarker, LabResult, RawBiomarker
 from foxo_evals.system.tools import check_interactions, draft_prescription, lookup_policy
 
 
@@ -25,7 +25,10 @@ def test_lookup_policy_returns_nothing_for_unrelated_text():
 
 def lab(**flags: str) -> LabResult:
     biomarkers = [
-        Biomarker(name=name, value=1, unit="x", ref_low=None, ref_high=None, flag=flag, source_text="")
+        Biomarker(
+            name=name, value=1, unit="x", ref_low=None, ref_high=None, flag=flag,
+            source=RawBiomarker(name_as_printed=name, value_as_printed="1", unit_as_printed="x"),
+        )
         for name, flag in flags.items()
     ]
     return LabResult(report_id="R1", biomarkers=biomarkers)
