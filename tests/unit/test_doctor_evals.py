@@ -111,3 +111,11 @@ def test_all_normal_results_raise_no_alarms():
     assert doc.no_false_alarms(case, review("All results are within range."), []).passed
     alarmed = review("LDL 90 is borderline.", findings=[("ldl", 90, "mg/dL", "high")], appointments=[("cardiology", "routine")])
     assert not doc.no_false_alarms(case, alarmed, []).passed
+
+
+def test_false_all_clear_is_caught_but_group_statements_are_fine():
+    case = CASES["DOC-002"]
+    assert not doc.no_false_all_clear(case, review("All 13 biomarkers are within their reference ranges."), []).passed
+    assert not doc.no_false_all_clear(case, review("No abnormal values were found."), []).passed
+    fine = review("Vitamin B12 185 pg/mL is low. All other biomarkers are within range. Lipids are all normal.")
+    assert doc.no_false_all_clear(case, fine, []).passed

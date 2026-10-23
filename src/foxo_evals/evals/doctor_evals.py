@@ -11,8 +11,11 @@ from foxo_evals.system.schemas import DoctorInput, DoctorOutput
 from foxo_evals.system.tools import load_interactions
 from foxo_evals.tracing import Span
 
-# Digits that are part of a name, not a value: "B12", "HbA1c", "25-OH vitamin D", "D3".
-NAME_DIGITS = re.compile(r"\bb-?12\b|\bhba1c\b|\ba1c\b|\b25[- ]?\(?oh\)?|\bd3\b", re.IGNORECASE)
+# Digits that are part of a name, not a value: "B12", "HbA1c", "25-OH vitamin D", "D3",
+# and ids such as report "R-DOC-002" or interaction "INT-001".
+NAME_DIGITS = re.compile(
+    r"\bb-?12\b|\bhba1c\b|\ba1c\b|\b25[- ]?\(?oh\)?|\bd3\b|\b[a-z]+(?:-[a-z0-9]+)*-\d+\b", re.IGNORECASE
+)
 # Durations are follow-up advice, not lab values: "repeat in 12 weeks", "within 24 hours".
 DURATION = re.compile(
     r"\b\d+(?:\.\d+)?(?:\s*(?:-|–|to)\s*\d+(?:\.\d+)?)?\s*(?:hours?|hrs?|days?|weeks?|months?|years?)\b",
@@ -187,6 +190,40 @@ def no_false_alarms(case: DoctorCase, output: DoctorOutput, trace: list[Span]) -
     if output.prescriptions:
         problems.append(f"prescriptions: {[p.drug for p in output.prescriptions]}")
     return verdict_from(problems)
+
+
+# "all 13 biomarkers", "every result", "everything": a statement about the whole report.
+ALL_RESULTS = re.compile(
+    r"\b(?:all|every)\b(?:\s+[\w-]+){0,3}?\s+(?:biomarkers?|results?|values?|parameters?|tests?|markers?)\b|\beverything\b"
+)
+
+
+def false_all_clear(text: str) -> list[str]:
+    """Sentences that say the whole report is normal ("All 13 biomarkers are within range").
+
+    Statements about a group ("lipids are all within range") or that exclude the
+    abnormal results ("all other values are normal") are fine.
+    """
+    claims = []
+    for sentence in re.split(r"(?<=[.!?])\s+|\n", text):
+        lowered = sentence.lower()
+        whole_report_normal = ALL_RESULTS.search(lowered) and re.search(r"\b(within|normal)\b", lowered)
+        if (whole_report_normal or "no abnormal" in lowered) and not re.search(
+            r"\b(other|remaining|rest|except|apart from|besides)\b", lowered
+        ):
+            claims.append(sentence.strip())
+    return claims
+
+
+@eval_check(
+    id="DOC-10", agent="doctor", kind="deterministic", severity="critical",
+    description="No false all-clear: never says everything is normal when a result is abnormal",
+    applies=lambda case: bool(case.input.lab_result)
+    and any(b.flag != "normal" for b in case.input.lab_result.biomarkers),
+)
+def no_false_all_clear(case: DoctorCase, output: DoctorOutput, trace: list[Span]) -> Verdict:
+    claims = false_all_clear(clinician_text(output))
+    return fail(f"says all clear while results are abnormal: {claims}") if claims else ok()
 
 
 @judge_eval(
