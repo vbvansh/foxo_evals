@@ -2,7 +2,7 @@ PYTHON ?= python
 PROMPTS ?= v1
 RUN ?= runs/baseline_v1
 A ?= runs/baseline_v1
-B ?= runs/doctor_v2
+B ?= runs/latest
 
 .PHONY: setup test trace check-data eval eval-live record baseline compare regression-demo calibration-template calibrate
 
@@ -41,9 +41,11 @@ baseline:
 compare:
 	$(PYTHON) -m foxo_evals compare $(A) $(B)
 
-# Replays Doctor v1 and v2 from recordings and shows what the gate catches. The v2 run
-# and the compare are expected to fail, so make ignores their exit codes ("-").
+# Replays three Doctor prompt versions from recordings and runs the gate on each change.
+# Some of these runs are expected to fail the gate, so make ignores their exit codes ("-").
 regression-demo:
 	$(PYTHON) -m foxo_evals run --mode replay --prompts v1 --out runs/demo_v1
 	-$(PYTHON) -m foxo_evals run --mode replay --prompts v1,doctor=v2 --out runs/demo_v2
+	-$(PYTHON) -m foxo_evals run --mode replay --prompts v1,doctor=v3 --out runs/demo_v3
 	-$(PYTHON) -m foxo_evals compare runs/demo_v1 runs/demo_v2
+	-$(PYTHON) -m foxo_evals compare runs/demo_v1 runs/demo_v3
