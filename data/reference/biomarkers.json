@@ -1,0 +1,118 @@
+{
+  "_note": "ILLUSTRATIVE ONLY. Ranges, critical thresholds and conversion factors are simplified for a demo and are not clinical guidance.",
+  "version": "1.0.0",
+  "biomarkers": {
+    "glucose_fasting": {
+      "display_name": "Fasting glucose",
+      "canonical_unit": "mg/dL",
+      "aliases": ["fasting glucose", "glucose fasting", "glucose (fasting)", "fasting blood sugar", "fbs", "fbg", "fasting plasma glucose", "glucose"],
+      "unit_factors": {"mg/dL": 1, "mmol/L": 18.0},
+      "ref": {"male": [70, 99], "female": [70, 99]},
+      "critical": [50, 400]
+    },
+    "hba1c": {
+      "display_name": "HbA1c",
+      "canonical_unit": "%",
+      "aliases": ["hba1c", "a1c", "glycated haemoglobin", "glycated hemoglobin", "glycosylated haemoglobin", "glycosylated hemoglobin"],
+      "unit_factors": {"%": 1},
+      "ref": {"male": [4.0, 5.6], "female": [4.0, 5.6]},
+      "critical": [null, null]
+    },
+    "total_cholesterol": {
+      "display_name": "Total cholesterol",
+      "canonical_unit": "mg/dL",
+      "aliases": ["total cholesterol", "cholesterol total", "cholesterol, total", "t. cholesterol", "serum cholesterol", "cholesterol"],
+      "unit_factors": {"mg/dL": 1, "mmol/L": 38.67},
+      "ref": {"male": [null, 200], "female": [null, 200]},
+      "critical": [null, null]
+    },
+    "ldl": {
+      "display_name": "LDL cholesterol",
+      "canonical_unit": "mg/dL",
+      "aliases": ["ldl", "ldl cholesterol", "ldl-c", "ldl cholesterol direct", "low density lipoprotein"],
+      "unit_factors": {"mg/dL": 1, "mmol/L": 38.67},
+      "ref": {"male": [null, 100], "female": [null, 100]},
+      "critical": [null, null]
+    },
+    "hdl": {
+      "display_name": "HDL cholesterol",
+      "canonical_unit": "mg/dL",
+      "aliases": ["hdl", "hdl cholesterol", "hdl-c", "high density lipoprotein"],
+      "unit_factors": {"mg/dL": 1, "mmol/L": 38.67},
+      "ref": {"male": [40, null], "female": [50, null]},
+      "critical": [null, null]
+    },
+    "triglycerides": {
+      "display_name": "Triglycerides",
+      "canonical_unit": "mg/dL",
+      "aliases": ["triglycerides", "triglyceride", "tg", "serum triglycerides"],
+      "unit_factors": {"mg/dL": 1, "mmol/L": 88.57},
+      "ref": {"male": [null, 150], "female": [null, 150]},
+      "critical": [null, 1000]
+    },
+    "tsh": {
+      "display_name": "TSH",
+      "canonical_unit": "mIU/L",
+      "aliases": ["tsh", "thyroid stimulating hormone", "tsh ultrasensitive", "ultrasensitive tsh", "s. tsh"],
+      "unit_factors": {"mIU/L": 1, "µIU/mL": 1, "mU/L": 1},
+      "ref": {"male": [0.4, 4.0], "female": [0.4, 4.0]},
+      "critical": [null, null]
+    },
+    "vitamin_d": {
+      "display_name": "Vitamin D (25-OH)",
+      "canonical_unit": "ng/mL",
+      "aliases": ["vitamin d", "vit d", "vitamin d3", "vitamin d total", "25-oh vitamin d", "vitamin d (25-oh)", "25 hydroxy vitamin d", "25-hydroxyvitamin d", "25(oh)d"],
+      "unit_factors": {"ng/mL": 1, "nmol/L": 0.4006},
+      "ref": {"male": [30, 100], "female": [30, 100]},
+      "critical": [null, 150]
+    },
+    "vitamin_b12": {
+      "display_name": "Vitamin B12",
+      "canonical_unit": "pg/mL",
+      "aliases": ["vitamin b12", "vitamin b-12", "vit b12", "b12", "cyanocobalamin", "cobalamin"],
+      "unit_factors": {"pg/mL": 1, "pmol/L": 1.355},
+      "ref": {"male": [200, 900], "female": [200, 900]},
+      "critical": [null, null]
+    },
+    "haemoglobin": {
+      "display_name": "Haemoglobin",
+      "canonical_unit": "g/dL",
+      "aliases": ["haemoglobin", "hemoglobin", "hb", "hgb"],
+      "unit_factors": {"g/dL": 1, "g/L": 0.1},
+      "ref": {"male": [13.0, 17.0], "female": [12.0, 15.5]},
+      "critical": [7.0, 20.0]
+    },
+    "creatinine": {
+      "display_name": "Creatinine",
+      "canonical_unit": "mg/dL",
+      "aliases": ["creatinine", "serum creatinine", "s. creatinine", "creat"],
+      "unit_factors": {"mg/dL": 1, "µmol/L": 0.01131},
+      "ref": {"male": [0.7, 1.3], "female": [0.6, 1.1]},
+      "critical": [null, 4.0]
+    },
+    "potassium": {
+      "display_name": "Potassium",
+      "canonical_unit": "mmol/L",
+      "aliases": ["potassium", "k", "k+", "serum potassium", "s. potassium", "potassium (k+)"],
+      "unit_factors": {"mmol/L": 1, "mEq/L": 1},
+      "ref": {"male": [3.5, 5.1], "female": [3.5, 5.1]},
+      "critical": [2.5, 6.0]
+    },
+    "alt": {
+      "display_name": "ALT (SGPT)",
+      "canonical_unit": "U/L",
+      "aliases": ["alt", "sgpt", "alt (sgpt)", "sgpt (alt)", "alanine aminotransferase", "alanine transaminase"],
+      "unit_factors": {"U/L": 1, "IU/L": 1},
+      "ref": {"male": [null, 50], "female": [null, 35]},
+      "critical": [null, null]
+    },
+    "crp": {
+      "display_name": "C-reactive protein",
+      "canonical_unit": "mg/L",
+      "aliases": ["crp", "c-reactive protein", "c reactive protein", "crp (quantitative)"],
+      "unit_factors": {"mg/L": 1, "mg/dL": 10},
+      "ref": {"male": [null, 5.0], "female": [null, 5.0]},
+      "critical": [null, null]
+    }
+  }
+}
