@@ -12,6 +12,8 @@ KB_DIR = DATA_DIR / "kb"
 PROMPTS_DIR = ROOT / "prompts"
 RECORDINGS_DIR = ROOT / "recordings"
 RUNS_DIR = ROOT / "runs"
+CALIBRATION_DIR = DATA_DIR / "calibration"
+REPORTS_DIR = ROOT / "reports"
 
 load_dotenv(ROOT / ".env")
 
@@ -31,3 +33,9 @@ PRICES = {
     "deepseek-v4.1-flash": (0.30, 1.20),
     "glm-5.3": (1.40, 4.40),
 }
+
+# Per-journey budgets for SYS-04 and SYS-05. The agents use a reasoning model and
+# a clinician reviews the output before the member sees it, so this is an async
+# budget, not chat latency.
+JOURNEY_LATENCY_BUDGET_MS = 180_000
+JOURNEY_COST_BUDGET_USD = 0.01
