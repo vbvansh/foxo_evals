@@ -1,0 +1,19 @@
+# secrets
+.env
+
+# project spec, kept local
+CLAUDE.md
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+
+# eval runs: only the committed baseline is kept
+runs/*
+!runs/baseline_v1/
+
+.vscode/
+.idea/

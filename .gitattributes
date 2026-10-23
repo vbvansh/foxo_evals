@@ -1,0 +1,3 @@
+# Prompts, datasets and recordings are hashed. Keep LF everywhere so the
+# hashes are identical on Windows and on the Linux CI runner.
+* text=auto eol=lf
