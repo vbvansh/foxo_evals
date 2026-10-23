@@ -4,8 +4,19 @@ import argparse
 import sys
 from pathlib import Path
 
+from foxo_evals.config import MODE, RUNS_DIR
 from foxo_evals.datasets.loader import check_data, read_manifest, update_manifest
+from foxo_evals.runner import parse_prompt_versions, run_evals
 from foxo_evals.tracing import format_trace, load_spans
+
+
+def run_command(args: argparse.Namespace) -> int:
+    summary = run_evals(args.out, mode=args.mode, prompt_versions=parse_prompt_versions(args.prompts))
+    gate = summary["gate"]
+    print(f"Gate: {'PASS' if gate['passed'] else 'FAIL'}   report: {args.out / 'report.md'}")
+    for reason in gate["reasons"]:
+        print(f"  {reason}")
+    return 0 if gate["passed"] else 1
 
 
 def check_data_command(args: argparse.Namespace) -> int:
@@ -39,6 +50,12 @@ def main(argv: list[str] | None = None) -> int:
     sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(prog="foxo_evals")
     commands = parser.add_subparsers(dest="command", required=True)
+
+    run = commands.add_parser("run", help="run the agents over the datasets and apply every eval")
+    run.add_argument("--mode", choices=["live", "record", "replay"], default=MODE)
+    run.add_argument("--prompts", default="v1", help="'v1', or per agent: 'v1,doctor=v2'")
+    run.add_argument("--out", type=Path, default=RUNS_DIR / "latest")
+    run.set_defaults(handler=run_command)
 
     trace = commands.add_parser("trace", help="print the span tree for one case")
     trace.add_argument("run_dir", type=Path)
