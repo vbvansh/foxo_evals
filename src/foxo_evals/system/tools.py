@@ -60,13 +60,18 @@ def short_id(prefix: str, *parts: str) -> str:
 def lookup_policy(query: str, top_k: int = 2) -> list[Policy]:
     """Rank policies by how many of their keywords appear in the query.
 
-    The knowledge base is six entries, so keyword overlap is enough and is easy
-    to debug. A real KB would need embeddings.
+    A keyword word matches the start of a query word, so "cancel" also finds
+    "cancelled" and "cancellation". The knowledge base is six entries, so keyword
+    overlap is enough and is easy to debug. A real KB would need embeddings.
     """
-    words = set(re.findall(r"[a-z]+", query.lower()))
+    words = re.findall(r"[a-z]+", query.lower())
+
+    def found(keyword: str) -> bool:
+        return all(any(word.startswith(part) for word in words) for part in keyword.split())
+
     scored = []
     for policy in load_policies():
-        score = sum(1 for keyword in policy.keywords if set(keyword.split()) <= words)
+        score = sum(1 for keyword in policy.keywords if found(keyword))
         if score:
             scored.append((score, policy))
     scored.sort(key=lambda pair: pair[0], reverse=True)
