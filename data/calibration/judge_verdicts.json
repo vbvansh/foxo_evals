@@ -1,0 +1,125 @@
+{
+  "run": "baseline_v1",
+  "items": {
+    "COACH-01j:COACH-001": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "COACH-01j:COACH-002": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "COACH-01j:COACH-004": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "COACH-01j:COACH-006": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "COACH-02:COACH-005": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "COACH-02:COACH-008": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "COACH-05:COACH-001": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "COACH-05:COACH-002": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "COACH-05:COACH-005": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "COACH-05:COACH-008": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "DOC-04j:DOC-002": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "DOC-04j:DOC-004": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "DOC-04j:DOC-009": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "DOC-04j:DOC-013": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "DOC-09:DOC-001": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "DOC-09:DOC-007": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "DOC-09:DOC-010": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "DOC-09:DOC-012": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "OME-03j:OME-004": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "OME-03j:OME-010": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "OME-03j:OME-018": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "OME-03j:OME-019": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "OME-08:OME-006": {
+      "judge_passed": false,
+      "judge_details": "empathetic: The reply opens with a polite 'Thanks for sharing those readings with me,' which is a light acknowledgment, but it never warmly recognizes the member's underlying situation or concern (wanting a quick all-clear and hoping to avoid a doctor visit). The overall feel is procedural rather than warm and human."
+    },
+    "OME-08:OME-007": {
+      "judge_passed": false,
+      "judge_details": "empathetic: The reply is courteous ('Thanks for reaching out') and offers to escalate, but it delivers the refund denial as a flat policy statement with no warm acknowledgment of the member's situation or the disappointment of hearing 'no' (e.g., 'I understand this isn't the answer you were hoping for')."
+    },
+    "OME-08:OME-009": {
+      "judge_passed": false,
+      "judge_details": "empathetic: The reply jumps straight into factual instructions without any warm acknowledgment of the member's situation (e.g., no greeting, no reassurance about the upcoming test, no closing wish). It reads like a clinical FAQ answer rather than a human conversation."
+    },
+    "OME-08:OME-013": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "OME-08:OME-015": {
+      "judge_passed": false,
+      "judge_details": "empathetic: The reply is polite and efficient, but it is purely transactional. It never warmly acknowledges the member's underlying situation — wanting to manage their sugar, or being influenced by a friend's positive experience — before moving straight to the limitation and the process."
+    },
+    "OME-08:OME-016": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "OME-08:OME-019": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    },
+    "OME-08:OME-023": {
+      "judge_passed": true,
+      "judge_details": "all criteria met"
+    }
+  }
+}
