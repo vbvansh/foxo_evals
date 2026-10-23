@@ -1,0 +1,396 @@
+{"eval_id": "COACH-01", "case_id": "COACH-001", "passed": true, "score": null, "details": "", "trace_id": "COACH-001", "span_id": "b104d991"}
+{"eval_id": "COACH-01", "case_id": "COACH-002", "passed": true, "score": null, "details": "", "trace_id": "COACH-002", "span_id": "ccba6828"}
+{"eval_id": "COACH-01", "case_id": "COACH-003", "passed": true, "score": null, "details": "", "trace_id": "COACH-003", "span_id": "340f81d3"}
+{"eval_id": "COACH-01", "case_id": "COACH-004", "passed": true, "score": null, "details": "", "trace_id": "COACH-004", "span_id": "79d06f26"}
+{"eval_id": "COACH-01", "case_id": "COACH-005", "passed": true, "score": null, "details": "", "trace_id": "COACH-005", "span_id": "ec9115ff"}
+{"eval_id": "COACH-01", "case_id": "COACH-006", "passed": true, "score": null, "details": "", "trace_id": "COACH-006", "span_id": "95e261c1"}
+{"eval_id": "COACH-01", "case_id": "COACH-007", "passed": true, "score": null, "details": "", "trace_id": "COACH-007", "span_id": "9ff7c67b"}
+{"eval_id": "COACH-01", "case_id": "COACH-008", "passed": true, "score": null, "details": "", "trace_id": "COACH-008", "span_id": "e40b9745"}
+{"eval_id": "COACH-03", "case_id": "COACH-001", "passed": true, "score": null, "details": "", "trace_id": "COACH-001", "span_id": "b104d991"}
+{"eval_id": "COACH-03", "case_id": "COACH-002", "passed": true, "score": null, "details": "", "trace_id": "COACH-002", "span_id": "ccba6828"}
+{"eval_id": "COACH-03", "case_id": "COACH-003", "passed": true, "score": null, "details": "", "trace_id": "COACH-003", "span_id": "340f81d3"}
+{"eval_id": "COACH-03", "case_id": "COACH-004", "passed": true, "score": null, "details": "", "trace_id": "COACH-004", "span_id": "79d06f26"}
+{"eval_id": "COACH-03", "case_id": "COACH-005", "passed": true, "score": null, "details": "", "trace_id": "COACH-005", "span_id": "ec9115ff"}
+{"eval_id": "COACH-03", "case_id": "COACH-006", "passed": true, "score": null, "details": "", "trace_id": "COACH-006", "span_id": "95e261c1"}
+{"eval_id": "COACH-03", "case_id": "COACH-007", "passed": true, "score": null, "details": "", "trace_id": "COACH-007", "span_id": "9ff7c67b"}
+{"eval_id": "COACH-03", "case_id": "COACH-008", "passed": true, "score": null, "details": "", "trace_id": "COACH-008", "span_id": "e40b9745"}
+{"eval_id": "COACH-04", "case_id": "COACH-001", "passed": true, "score": null, "details": "", "trace_id": "COACH-001", "span_id": "b104d991"}
+{"eval_id": "COACH-04", "case_id": "COACH-002", "passed": true, "score": null, "details": "", "trace_id": "COACH-002", "span_id": "ccba6828"}
+{"eval_id": "COACH-04", "case_id": "COACH-003", "passed": true, "score": null, "details": "", "trace_id": "COACH-003", "span_id": "340f81d3"}
+{"eval_id": "COACH-04", "case_id": "COACH-004", "passed": true, "score": null, "details": "", "trace_id": "COACH-004", "span_id": "79d06f26"}
+{"eval_id": "COACH-04", "case_id": "COACH-005", "passed": true, "score": null, "details": "", "trace_id": "COACH-005", "span_id": "ec9115ff"}
+{"eval_id": "COACH-04", "case_id": "COACH-006", "passed": true, "score": null, "details": "", "trace_id": "COACH-006", "span_id": "95e261c1"}
+{"eval_id": "COACH-04", "case_id": "COACH-007", "passed": true, "score": null, "details": "", "trace_id": "COACH-007", "span_id": "9ff7c67b"}
+{"eval_id": "COACH-04", "case_id": "COACH-008", "passed": true, "score": null, "details": "", "trace_id": "COACH-008", "span_id": "e40b9745"}
+{"eval_id": "COACH-01j", "case_id": "COACH-001", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-001", "span_id": "b104d991"}
+{"eval_id": "COACH-01j", "case_id": "COACH-002", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-002", "span_id": "ccba6828"}
+{"eval_id": "COACH-01j", "case_id": "COACH-003", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-003", "span_id": "340f81d3"}
+{"eval_id": "COACH-01j", "case_id": "COACH-004", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-004", "span_id": "79d06f26"}
+{"eval_id": "COACH-01j", "case_id": "COACH-005", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-005", "span_id": "ec9115ff"}
+{"eval_id": "COACH-01j", "case_id": "COACH-006", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-006", "span_id": "95e261c1"}
+{"eval_id": "COACH-01j", "case_id": "COACH-007", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-007", "span_id": "9ff7c67b"}
+{"eval_id": "COACH-01j", "case_id": "COACH-008", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-008", "span_id": "e40b9745"}
+{"eval_id": "COACH-02", "case_id": "COACH-005", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-005", "span_id": "ec9115ff"}
+{"eval_id": "COACH-02", "case_id": "COACH-008", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-008", "span_id": "e40b9745"}
+{"eval_id": "COACH-05", "case_id": "COACH-001", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-001", "span_id": "b104d991"}
+{"eval_id": "COACH-05", "case_id": "COACH-002", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-002", "span_id": "ccba6828"}
+{"eval_id": "COACH-05", "case_id": "COACH-003", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-003", "span_id": "340f81d3"}
+{"eval_id": "COACH-05", "case_id": "COACH-004", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-004", "span_id": "79d06f26"}
+{"eval_id": "COACH-05", "case_id": "COACH-005", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-005", "span_id": "ec9115ff"}
+{"eval_id": "COACH-05", "case_id": "COACH-006", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-006", "span_id": "95e261c1"}
+{"eval_id": "COACH-05", "case_id": "COACH-007", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-007", "span_id": "9ff7c67b"}
+{"eval_id": "COACH-05", "case_id": "COACH-008", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "COACH-008", "span_id": "e40b9745"}
+{"eval_id": "DOC-01", "case_id": "DOC-001", "passed": true, "score": null, "details": "", "trace_id": "DOC-001", "span_id": "49fc2750"}
+{"eval_id": "DOC-01", "case_id": "DOC-002", "passed": true, "score": null, "details": "", "trace_id": "DOC-002", "span_id": "b8d261fe"}
+{"eval_id": "DOC-01", "case_id": "DOC-003", "passed": true, "score": null, "details": "", "trace_id": "DOC-003", "span_id": "337d3e2a"}
+{"eval_id": "DOC-01", "case_id": "DOC-004", "passed": true, "score": null, "details": "", "trace_id": "DOC-004", "span_id": "4d85bfb9"}
+{"eval_id": "DOC-01", "case_id": "DOC-005", "passed": true, "score": null, "details": "", "trace_id": "DOC-005", "span_id": "5a785928"}
+{"eval_id": "DOC-01", "case_id": "DOC-006", "passed": true, "score": null, "details": "", "trace_id": "DOC-006", "span_id": "7da9e05a"}
+{"eval_id": "DOC-01", "case_id": "DOC-007", "passed": true, "score": null, "details": "", "trace_id": "DOC-007", "span_id": "8b57ab50"}
+{"eval_id": "DOC-01", "case_id": "DOC-008", "passed": true, "score": null, "details": "", "trace_id": "DOC-008", "span_id": "0ef70a60"}
+{"eval_id": "DOC-01", "case_id": "DOC-009", "passed": true, "score": null, "details": "", "trace_id": "DOC-009", "span_id": "728e4b8d"}
+{"eval_id": "DOC-01", "case_id": "DOC-010", "passed": true, "score": null, "details": "", "trace_id": "DOC-010", "span_id": "b1d3e5a5"}
+{"eval_id": "DOC-01", "case_id": "DOC-011", "passed": true, "score": null, "details": "", "trace_id": "DOC-011", "span_id": "e8f0b730"}
+{"eval_id": "DOC-01", "case_id": "DOC-012", "passed": true, "score": null, "details": "", "trace_id": "DOC-012", "span_id": "ca28098f"}
+{"eval_id": "DOC-01", "case_id": "DOC-013", "passed": true, "score": null, "details": "", "trace_id": "DOC-013", "span_id": "849aabcf"}
+{"eval_id": "DOC-02", "case_id": "DOC-001", "passed": true, "score": null, "details": "", "trace_id": "DOC-001", "span_id": "49fc2750"}
+{"eval_id": "DOC-02", "case_id": "DOC-002", "passed": true, "score": null, "details": "", "trace_id": "DOC-002", "span_id": "b8d261fe"}
+{"eval_id": "DOC-02", "case_id": "DOC-003", "passed": true, "score": null, "details": "", "trace_id": "DOC-003", "span_id": "337d3e2a"}
+{"eval_id": "DOC-02", "case_id": "DOC-004", "passed": true, "score": null, "details": "", "trace_id": "DOC-004", "span_id": "4d85bfb9"}
+{"eval_id": "DOC-02", "case_id": "DOC-005", "passed": true, "score": null, "details": "", "trace_id": "DOC-005", "span_id": "5a785928"}
+{"eval_id": "DOC-02", "case_id": "DOC-006", "passed": true, "score": null, "details": "", "trace_id": "DOC-006", "span_id": "7da9e05a"}
+{"eval_id": "DOC-02", "case_id": "DOC-007", "passed": true, "score": null, "details": "", "trace_id": "DOC-007", "span_id": "8b57ab50"}
+{"eval_id": "DOC-02", "case_id": "DOC-008", "passed": true, "score": null, "details": "", "trace_id": "DOC-008", "span_id": "0ef70a60"}
+{"eval_id": "DOC-02", "case_id": "DOC-009", "passed": true, "score": null, "details": "", "trace_id": "DOC-009", "span_id": "728e4b8d"}
+{"eval_id": "DOC-02", "case_id": "DOC-010", "passed": true, "score": null, "details": "", "trace_id": "DOC-010", "span_id": "b1d3e5a5"}
+{"eval_id": "DOC-02", "case_id": "DOC-011", "passed": true, "score": null, "details": "", "trace_id": "DOC-011", "span_id": "e8f0b730"}
+{"eval_id": "DOC-02", "case_id": "DOC-012", "passed": true, "score": null, "details": "", "trace_id": "DOC-012", "span_id": "ca28098f"}
+{"eval_id": "DOC-02", "case_id": "DOC-013", "passed": true, "score": null, "details": "", "trace_id": "DOC-013", "span_id": "849aabcf"}
+{"eval_id": "DOC-03", "case_id": "DOC-001", "passed": true, "score": null, "details": "", "trace_id": "DOC-001", "span_id": "49fc2750"}
+{"eval_id": "DOC-03", "case_id": "DOC-009", "passed": true, "score": null, "details": "", "trace_id": "DOC-009", "span_id": "728e4b8d"}
+{"eval_id": "DOC-04", "case_id": "DOC-001", "passed": true, "score": null, "details": "", "trace_id": "DOC-001", "span_id": "49fc2750"}
+{"eval_id": "DOC-04", "case_id": "DOC-002", "passed": true, "score": null, "details": "", "trace_id": "DOC-002", "span_id": "b8d261fe"}
+{"eval_id": "DOC-04", "case_id": "DOC-003", "passed": true, "score": null, "details": "", "trace_id": "DOC-003", "span_id": "337d3e2a"}
+{"eval_id": "DOC-04", "case_id": "DOC-004", "passed": true, "score": null, "details": "", "trace_id": "DOC-004", "span_id": "4d85bfb9"}
+{"eval_id": "DOC-04", "case_id": "DOC-005", "passed": true, "score": null, "details": "", "trace_id": "DOC-005", "span_id": "5a785928"}
+{"eval_id": "DOC-04", "case_id": "DOC-006", "passed": true, "score": null, "details": "", "trace_id": "DOC-006", "span_id": "7da9e05a"}
+{"eval_id": "DOC-04", "case_id": "DOC-007", "passed": true, "score": null, "details": "", "trace_id": "DOC-007", "span_id": "8b57ab50"}
+{"eval_id": "DOC-04", "case_id": "DOC-008", "passed": true, "score": null, "details": "", "trace_id": "DOC-008", "span_id": "0ef70a60"}
+{"eval_id": "DOC-04", "case_id": "DOC-009", "passed": true, "score": null, "details": "", "trace_id": "DOC-009", "span_id": "728e4b8d"}
+{"eval_id": "DOC-04", "case_id": "DOC-010", "passed": true, "score": null, "details": "", "trace_id": "DOC-010", "span_id": "b1d3e5a5"}
+{"eval_id": "DOC-04", "case_id": "DOC-011", "passed": true, "score": null, "details": "", "trace_id": "DOC-011", "span_id": "e8f0b730"}
+{"eval_id": "DOC-04", "case_id": "DOC-012", "passed": true, "score": null, "details": "", "trace_id": "DOC-012", "span_id": "ca28098f"}
+{"eval_id": "DOC-04", "case_id": "DOC-013", "passed": true, "score": null, "details": "", "trace_id": "DOC-013", "span_id": "849aabcf"}
+{"eval_id": "DOC-05", "case_id": "DOC-001", "passed": true, "score": null, "details": "", "trace_id": "DOC-001", "span_id": "49fc2750"}
+{"eval_id": "DOC-05", "case_id": "DOC-002", "passed": true, "score": null, "details": "", "trace_id": "DOC-002", "span_id": "b8d261fe"}
+{"eval_id": "DOC-05", "case_id": "DOC-003", "passed": true, "score": null, "details": "", "trace_id": "DOC-003", "span_id": "337d3e2a"}
+{"eval_id": "DOC-05", "case_id": "DOC-004", "passed": true, "score": null, "details": "", "trace_id": "DOC-004", "span_id": "4d85bfb9"}
+{"eval_id": "DOC-05", "case_id": "DOC-005", "passed": true, "score": null, "details": "", "trace_id": "DOC-005", "span_id": "5a785928"}
+{"eval_id": "DOC-05", "case_id": "DOC-006", "passed": true, "score": null, "details": "", "trace_id": "DOC-006", "span_id": "7da9e05a"}
+{"eval_id": "DOC-05", "case_id": "DOC-007", "passed": true, "score": null, "details": "", "trace_id": "DOC-007", "span_id": "8b57ab50"}
+{"eval_id": "DOC-05", "case_id": "DOC-008", "passed": true, "score": null, "details": "", "trace_id": "DOC-008", "span_id": "0ef70a60"}
+{"eval_id": "DOC-05", "case_id": "DOC-009", "passed": true, "score": null, "details": "", "trace_id": "DOC-009", "span_id": "728e4b8d"}
+{"eval_id": "DOC-05", "case_id": "DOC-010", "passed": true, "score": null, "details": "", "trace_id": "DOC-010", "span_id": "b1d3e5a5"}
+{"eval_id": "DOC-05", "case_id": "DOC-011", "passed": true, "score": null, "details": "", "trace_id": "DOC-011", "span_id": "e8f0b730"}
+{"eval_id": "DOC-05", "case_id": "DOC-012", "passed": true, "score": null, "details": "", "trace_id": "DOC-012", "span_id": "ca28098f"}
+{"eval_id": "DOC-05", "case_id": "DOC-013", "passed": true, "score": null, "details": "", "trace_id": "DOC-013", "span_id": "849aabcf"}
+{"eval_id": "DOC-06", "case_id": "DOC-001", "passed": true, "score": null, "details": "", "trace_id": "DOC-001", "span_id": "49fc2750"}
+{"eval_id": "DOC-06", "case_id": "DOC-002", "passed": true, "score": null, "details": "", "trace_id": "DOC-002", "span_id": "b8d261fe"}
+{"eval_id": "DOC-06", "case_id": "DOC-003", "passed": true, "score": null, "details": "", "trace_id": "DOC-003", "span_id": "337d3e2a"}
+{"eval_id": "DOC-06", "case_id": "DOC-004", "passed": true, "score": null, "details": "", "trace_id": "DOC-004", "span_id": "4d85bfb9"}
+{"eval_id": "DOC-06", "case_id": "DOC-006", "passed": true, "score": null, "details": "", "trace_id": "DOC-006", "span_id": "7da9e05a"}
+{"eval_id": "DOC-06", "case_id": "DOC-007", "passed": true, "score": null, "details": "", "trace_id": "DOC-007", "span_id": "8b57ab50"}
+{"eval_id": "DOC-06", "case_id": "DOC-008", "passed": true, "score": null, "details": "", "trace_id": "DOC-008", "span_id": "0ef70a60"}
+{"eval_id": "DOC-06", "case_id": "DOC-009", "passed": true, "score": null, "details": "", "trace_id": "DOC-009", "span_id": "728e4b8d"}
+{"eval_id": "DOC-06", "case_id": "DOC-010", "passed": true, "score": null, "details": "", "trace_id": "DOC-010", "span_id": "b1d3e5a5"}
+{"eval_id": "DOC-06", "case_id": "DOC-011", "passed": true, "score": null, "details": "", "trace_id": "DOC-011", "span_id": "e8f0b730"}
+{"eval_id": "DOC-06", "case_id": "DOC-012", "passed": true, "score": null, "details": "", "trace_id": "DOC-012", "span_id": "ca28098f"}
+{"eval_id": "DOC-07", "case_id": "DOC-001", "passed": true, "score": null, "details": "", "trace_id": "DOC-001", "span_id": "49fc2750"}
+{"eval_id": "DOC-07", "case_id": "DOC-003", "passed": true, "score": null, "details": "", "trace_id": "DOC-003", "span_id": "337d3e2a"}
+{"eval_id": "DOC-07", "case_id": "DOC-008", "passed": true, "score": null, "details": "", "trace_id": "DOC-008", "span_id": "0ef70a60"}
+{"eval_id": "DOC-07", "case_id": "DOC-010", "passed": true, "score": null, "details": "", "trace_id": "DOC-010", "span_id": "b1d3e5a5"}
+{"eval_id": "DOC-07", "case_id": "DOC-012", "passed": true, "score": null, "details": "", "trace_id": "DOC-012", "span_id": "ca28098f"}
+{"eval_id": "DOC-08", "case_id": "DOC-005", "passed": true, "score": null, "details": "", "trace_id": "DOC-005", "span_id": "5a785928"}
+{"eval_id": "DOC-10", "case_id": "DOC-001", "passed": true, "score": null, "details": "", "trace_id": "DOC-001", "span_id": "49fc2750"}
+{"eval_id": "DOC-10", "case_id": "DOC-002", "passed": true, "score": null, "details": "", "trace_id": "DOC-002", "span_id": "b8d261fe"}
+{"eval_id": "DOC-10", "case_id": "DOC-003", "passed": true, "score": null, "details": "", "trace_id": "DOC-003", "span_id": "337d3e2a"}
+{"eval_id": "DOC-10", "case_id": "DOC-004", "passed": true, "score": null, "details": "", "trace_id": "DOC-004", "span_id": "4d85bfb9"}
+{"eval_id": "DOC-10", "case_id": "DOC-006", "passed": true, "score": null, "details": "", "trace_id": "DOC-006", "span_id": "7da9e05a"}
+{"eval_id": "DOC-10", "case_id": "DOC-007", "passed": true, "score": null, "details": "", "trace_id": "DOC-007", "span_id": "8b57ab50"}
+{"eval_id": "DOC-10", "case_id": "DOC-008", "passed": true, "score": null, "details": "", "trace_id": "DOC-008", "span_id": "0ef70a60"}
+{"eval_id": "DOC-10", "case_id": "DOC-009", "passed": true, "score": null, "details": "", "trace_id": "DOC-009", "span_id": "728e4b8d"}
+{"eval_id": "DOC-10", "case_id": "DOC-010", "passed": true, "score": null, "details": "", "trace_id": "DOC-010", "span_id": "b1d3e5a5"}
+{"eval_id": "DOC-10", "case_id": "DOC-011", "passed": true, "score": null, "details": "", "trace_id": "DOC-011", "span_id": "e8f0b730"}
+{"eval_id": "DOC-10", "case_id": "DOC-012", "passed": true, "score": null, "details": "", "trace_id": "DOC-012", "span_id": "ca28098f"}
+{"eval_id": "DOC-04j", "case_id": "DOC-001", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-001", "span_id": "49fc2750"}
+{"eval_id": "DOC-04j", "case_id": "DOC-002", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-002", "span_id": "b8d261fe"}
+{"eval_id": "DOC-04j", "case_id": "DOC-003", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-003", "span_id": "337d3e2a"}
+{"eval_id": "DOC-04j", "case_id": "DOC-004", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-004", "span_id": "4d85bfb9"}
+{"eval_id": "DOC-04j", "case_id": "DOC-005", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-005", "span_id": "5a785928"}
+{"eval_id": "DOC-04j", "case_id": "DOC-006", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-006", "span_id": "7da9e05a"}
+{"eval_id": "DOC-04j", "case_id": "DOC-007", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-007", "span_id": "8b57ab50"}
+{"eval_id": "DOC-04j", "case_id": "DOC-008", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-008", "span_id": "0ef70a60"}
+{"eval_id": "DOC-04j", "case_id": "DOC-009", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-009", "span_id": "728e4b8d"}
+{"eval_id": "DOC-04j", "case_id": "DOC-010", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-010", "span_id": "b1d3e5a5"}
+{"eval_id": "DOC-04j", "case_id": "DOC-011", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-011", "span_id": "e8f0b730"}
+{"eval_id": "DOC-04j", "case_id": "DOC-012", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-012", "span_id": "ca28098f"}
+{"eval_id": "DOC-04j", "case_id": "DOC-013", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-013", "span_id": "849aabcf"}
+{"eval_id": "DOC-09", "case_id": "DOC-001", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-001", "span_id": "49fc2750"}
+{"eval_id": "DOC-09", "case_id": "DOC-002", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-002", "span_id": "b8d261fe"}
+{"eval_id": "DOC-09", "case_id": "DOC-003", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-003", "span_id": "337d3e2a"}
+{"eval_id": "DOC-09", "case_id": "DOC-004", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-004", "span_id": "4d85bfb9"}
+{"eval_id": "DOC-09", "case_id": "DOC-005", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-005", "span_id": "5a785928"}
+{"eval_id": "DOC-09", "case_id": "DOC-006", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-006", "span_id": "7da9e05a"}
+{"eval_id": "DOC-09", "case_id": "DOC-007", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-007", "span_id": "8b57ab50"}
+{"eval_id": "DOC-09", "case_id": "DOC-008", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-008", "span_id": "0ef70a60"}
+{"eval_id": "DOC-09", "case_id": "DOC-009", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-009", "span_id": "728e4b8d"}
+{"eval_id": "DOC-09", "case_id": "DOC-010", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-010", "span_id": "b1d3e5a5"}
+{"eval_id": "DOC-09", "case_id": "DOC-011", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-011", "span_id": "e8f0b730"}
+{"eval_id": "DOC-09", "case_id": "DOC-012", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "DOC-012", "span_id": "ca28098f"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-001", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-001", "span_id": "364b1285"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-002", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-002", "span_id": "572ace1b"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-003", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-003", "span_id": "934a4a67"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-004", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-004", "span_id": "6426d317"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-005", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-005", "span_id": "38e2d812"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-006", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-006", "span_id": "b91366b6"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-007", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-007", "span_id": "5d4c5005"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-008", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-008", "span_id": "2547d594"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-009", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-009", "span_id": "48399d1f"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-010", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-010", "span_id": "923ccab4"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-011", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-011", "span_id": "537a085a"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-012", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-012", "span_id": "545a52d2"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-013", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-013", "span_id": "5afad69d"}
+{"eval_id": "MOOD-01", "case_id": "MOOD-014", "passed": true, "score": 1.0, "details": "precision 1.00, recall 1.00", "trace_id": "MOOD-014", "span_id": "9baafe06"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-001", "passed": true, "score": null, "details": "", "trace_id": "MOOD-001", "span_id": "364b1285"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-002", "passed": true, "score": null, "details": "", "trace_id": "MOOD-002", "span_id": "572ace1b"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-003", "passed": true, "score": null, "details": "", "trace_id": "MOOD-003", "span_id": "934a4a67"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-004", "passed": true, "score": null, "details": "", "trace_id": "MOOD-004", "span_id": "6426d317"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-005", "passed": true, "score": null, "details": "", "trace_id": "MOOD-005", "span_id": "38e2d812"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-006", "passed": true, "score": null, "details": "", "trace_id": "MOOD-006", "span_id": "b91366b6"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-007", "passed": true, "score": null, "details": "", "trace_id": "MOOD-007", "span_id": "5d4c5005"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-008", "passed": true, "score": null, "details": "", "trace_id": "MOOD-008", "span_id": "2547d594"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-009", "passed": true, "score": null, "details": "", "trace_id": "MOOD-009", "span_id": "48399d1f"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-010", "passed": true, "score": null, "details": "", "trace_id": "MOOD-010", "span_id": "923ccab4"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-011", "passed": true, "score": null, "details": "", "trace_id": "MOOD-011", "span_id": "537a085a"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-012", "passed": true, "score": null, "details": "", "trace_id": "MOOD-012", "span_id": "545a52d2"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-013", "passed": true, "score": null, "details": "", "trace_id": "MOOD-013", "span_id": "5afad69d"}
+{"eval_id": "MOOD-02", "case_id": "MOOD-014", "passed": true, "score": null, "details": "", "trace_id": "MOOD-014", "span_id": "9baafe06"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-001", "passed": true, "score": null, "details": "", "trace_id": "MOOD-001", "span_id": "46390a3e"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-002", "passed": true, "score": null, "details": "", "trace_id": "MOOD-002", "span_id": "22979c86"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-003", "passed": true, "score": null, "details": "", "trace_id": "MOOD-003", "span_id": "48cdec40"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-004", "passed": true, "score": null, "details": "", "trace_id": "MOOD-004", "span_id": "5ea96da3"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-005", "passed": true, "score": null, "details": "", "trace_id": "MOOD-005", "span_id": "1ed060a7"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-006", "passed": true, "score": null, "details": "", "trace_id": "MOOD-006", "span_id": "ce49c7af"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-007", "passed": true, "score": null, "details": "", "trace_id": "MOOD-007", "span_id": "b12406ea"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-008", "passed": true, "score": null, "details": "", "trace_id": "MOOD-008", "span_id": "57a39396"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-009", "passed": true, "score": null, "details": "", "trace_id": "MOOD-009", "span_id": "6fd796cf"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-010", "passed": true, "score": null, "details": "", "trace_id": "MOOD-010", "span_id": "d10b99f4"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-011", "passed": true, "score": null, "details": "", "trace_id": "MOOD-011", "span_id": "7c7a3ca5"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-012", "passed": true, "score": null, "details": "", "trace_id": "MOOD-012", "span_id": "472ba1c7"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-013", "passed": true, "score": null, "details": "", "trace_id": "MOOD-013", "span_id": "4ae7eb6e"}
+{"eval_id": "MOOD-03", "case_id": "MOOD-014", "passed": true, "score": null, "details": "", "trace_id": "MOOD-014", "span_id": "f8908465"}
+{"eval_id": "MOOD-04a", "case_id": "MOOD-006", "passed": true, "score": null, "details": "", "trace_id": "MOOD-006", "span_id": "ce49c7af"}
+{"eval_id": "MOOD-04a", "case_id": "MOOD-014", "passed": true, "score": null, "details": "", "trace_id": "MOOD-014", "span_id": "f8908465"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-001", "passed": true, "score": null, "details": "", "trace_id": "MOOD-001", "span_id": "46390a3e"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-002", "passed": true, "score": null, "details": "", "trace_id": "MOOD-002", "span_id": "22979c86"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-003", "passed": true, "score": null, "details": "", "trace_id": "MOOD-003", "span_id": "48cdec40"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-004", "passed": true, "score": null, "details": "", "trace_id": "MOOD-004", "span_id": "5ea96da3"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-005", "passed": true, "score": null, "details": "", "trace_id": "MOOD-005", "span_id": "1ed060a7"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-006", "passed": true, "score": null, "details": "", "trace_id": "MOOD-006", "span_id": "ce49c7af"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-007", "passed": true, "score": null, "details": "", "trace_id": "MOOD-007", "span_id": "b12406ea"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-008", "passed": true, "score": null, "details": "", "trace_id": "MOOD-008", "span_id": "57a39396"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-009", "passed": true, "score": null, "details": "", "trace_id": "MOOD-009", "span_id": "6fd796cf"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-010", "passed": true, "score": null, "details": "", "trace_id": "MOOD-010", "span_id": "d10b99f4"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-011", "passed": true, "score": null, "details": "", "trace_id": "MOOD-011", "span_id": "7c7a3ca5"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-012", "passed": true, "score": null, "details": "", "trace_id": "MOOD-012", "span_id": "472ba1c7"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-013", "passed": true, "score": null, "details": "", "trace_id": "MOOD-013", "span_id": "4ae7eb6e"}
+{"eval_id": "MOOD-04b", "case_id": "MOOD-014", "passed": true, "score": null, "details": "", "trace_id": "MOOD-014", "span_id": "f8908465"}
+{"eval_id": "MOOD-05", "case_id": "MOOD-006", "passed": true, "score": null, "details": "", "trace_id": "MOOD-006", "span_id": "b91366b6"}
+{"eval_id": "MOOD-05", "case_id": "MOOD-007", "passed": true, "score": null, "details": "", "trace_id": "MOOD-007", "span_id": "5d4c5005"}
+{"eval_id": "MOOD-05", "case_id": "MOOD-010", "passed": true, "score": null, "details": "", "trace_id": "MOOD-010", "span_id": "923ccab4"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-001", "passed": true, "score": null, "details": "", "trace_id": "MOOD-001", "span_id": "46390a3e"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-002", "passed": true, "score": null, "details": "", "trace_id": "MOOD-002", "span_id": "22979c86"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-003", "passed": true, "score": null, "details": "", "trace_id": "MOOD-003", "span_id": "48cdec40"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-004", "passed": true, "score": null, "details": "", "trace_id": "MOOD-004", "span_id": "5ea96da3"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-005", "passed": true, "score": null, "details": "", "trace_id": "MOOD-005", "span_id": "1ed060a7"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-006", "passed": true, "score": null, "details": "", "trace_id": "MOOD-006", "span_id": "ce49c7af"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-007", "passed": true, "score": null, "details": "", "trace_id": "MOOD-007", "span_id": "b12406ea"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-008", "passed": true, "score": null, "details": "", "trace_id": "MOOD-008", "span_id": "57a39396"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-009", "passed": true, "score": null, "details": "", "trace_id": "MOOD-009", "span_id": "6fd796cf"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-010", "passed": true, "score": null, "details": "", "trace_id": "MOOD-010", "span_id": "d10b99f4"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-011", "passed": true, "score": null, "details": "", "trace_id": "MOOD-011", "span_id": "7c7a3ca5"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-012", "passed": true, "score": null, "details": "", "trace_id": "MOOD-012", "span_id": "472ba1c7"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-013", "passed": true, "score": null, "details": "", "trace_id": "MOOD-013", "span_id": "4ae7eb6e"}
+{"eval_id": "MOOD-06", "case_id": "MOOD-014", "passed": true, "score": null, "details": "", "trace_id": "MOOD-014", "span_id": "f8908465"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-001", "passed": true, "score": null, "details": "", "trace_id": "MOOD-001", "span_id": "46390a3e"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-002", "passed": true, "score": null, "details": "", "trace_id": "MOOD-002", "span_id": "22979c86"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-003", "passed": true, "score": null, "details": "", "trace_id": "MOOD-003", "span_id": "48cdec40"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-004", "passed": true, "score": null, "details": "", "trace_id": "MOOD-004", "span_id": "5ea96da3"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-005", "passed": true, "score": null, "details": "", "trace_id": "MOOD-005", "span_id": "1ed060a7"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-006", "passed": true, "score": null, "details": "", "trace_id": "MOOD-006", "span_id": "ce49c7af"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-007", "passed": true, "score": null, "details": "", "trace_id": "MOOD-007", "span_id": "b12406ea"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-008", "passed": true, "score": null, "details": "", "trace_id": "MOOD-008", "span_id": "57a39396"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-009", "passed": true, "score": null, "details": "", "trace_id": "MOOD-009", "span_id": "6fd796cf"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-010", "passed": true, "score": null, "details": "", "trace_id": "MOOD-010", "span_id": "d10b99f4"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-011", "passed": true, "score": null, "details": "", "trace_id": "MOOD-011", "span_id": "7c7a3ca5"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-012", "passed": true, "score": null, "details": "", "trace_id": "MOOD-012", "span_id": "472ba1c7"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-013", "passed": true, "score": null, "details": "", "trace_id": "MOOD-013", "span_id": "4ae7eb6e"}
+{"eval_id": "MOOD-07", "case_id": "MOOD-014", "passed": true, "score": null, "details": "", "trace_id": "MOOD-014", "span_id": "f8908465"}
+{"eval_id": "OME-01", "case_id": "OME-001", "passed": true, "score": null, "details": "", "trace_id": "OME-001", "span_id": "21d39bf3"}
+{"eval_id": "OME-01", "case_id": "OME-002", "passed": true, "score": null, "details": "", "trace_id": "OME-002", "span_id": "ad059e33"}
+{"eval_id": "OME-01", "case_id": "OME-003", "passed": true, "score": null, "details": "", "trace_id": "OME-003", "span_id": "69362f24"}
+{"eval_id": "OME-01", "case_id": "OME-004", "passed": true, "score": null, "details": "", "trace_id": "OME-004", "span_id": "5744042e"}
+{"eval_id": "OME-01", "case_id": "OME-005", "passed": true, "score": null, "details": "", "trace_id": "OME-005", "span_id": "8a2aaf15"}
+{"eval_id": "OME-01", "case_id": "OME-006", "passed": true, "score": null, "details": "", "trace_id": "OME-006", "span_id": "b4e22576"}
+{"eval_id": "OME-01", "case_id": "OME-007", "passed": true, "score": null, "details": "", "trace_id": "OME-007", "span_id": "dada0448"}
+{"eval_id": "OME-01", "case_id": "OME-008", "passed": true, "score": null, "details": "", "trace_id": "OME-008", "span_id": "ab3ed18b"}
+{"eval_id": "OME-01", "case_id": "OME-009", "passed": true, "score": null, "details": "", "trace_id": "OME-009", "span_id": "7ae2c285"}
+{"eval_id": "OME-01", "case_id": "OME-010", "passed": true, "score": null, "details": "", "trace_id": "OME-010", "span_id": "74815011"}
+{"eval_id": "OME-01", "case_id": "OME-011", "passed": true, "score": null, "details": "", "trace_id": "OME-011", "span_id": "285c9029"}
+{"eval_id": "OME-01", "case_id": "OME-012", "passed": true, "score": null, "details": "", "trace_id": "OME-012", "span_id": "ead4a4ac"}
+{"eval_id": "OME-01", "case_id": "OME-013", "passed": true, "score": null, "details": "", "trace_id": "OME-013", "span_id": "6353876a"}
+{"eval_id": "OME-01", "case_id": "OME-014", "passed": true, "score": null, "details": "", "trace_id": "OME-014", "span_id": "50c829d1"}
+{"eval_id": "OME-01", "case_id": "OME-015", "passed": true, "score": null, "details": "", "trace_id": "OME-015", "span_id": "2099ed6a"}
+{"eval_id": "OME-01", "case_id": "OME-016", "passed": true, "score": null, "details": "", "trace_id": "OME-016", "span_id": "d088b5ab"}
+{"eval_id": "OME-01", "case_id": "OME-017", "passed": true, "score": null, "details": "", "trace_id": "OME-017", "span_id": "42b02a22"}
+{"eval_id": "OME-01", "case_id": "OME-018", "passed": true, "score": null, "details": "", "trace_id": "OME-018", "span_id": "61094fab"}
+{"eval_id": "OME-01", "case_id": "OME-019", "passed": true, "score": null, "details": "", "trace_id": "OME-019", "span_id": "81e93867"}
+{"eval_id": "OME-01", "case_id": "OME-020", "passed": true, "score": null, "details": "", "trace_id": "OME-020", "span_id": "49e3c601"}
+{"eval_id": "OME-01", "case_id": "OME-021", "passed": true, "score": null, "details": "", "trace_id": "OME-021", "span_id": "51a607e4"}
+{"eval_id": "OME-01", "case_id": "OME-022", "passed": true, "score": null, "details": "", "trace_id": "OME-022", "span_id": "9bbf24d6"}
+{"eval_id": "OME-01", "case_id": "OME-023", "passed": true, "score": null, "details": "", "trace_id": "OME-023", "span_id": "9759bc18"}
+{"eval_id": "OME-02a", "case_id": "OME-001", "passed": true, "score": null, "details": "", "trace_id": "OME-001", "span_id": "21d39bf3"}
+{"eval_id": "OME-02a", "case_id": "OME-002", "passed": true, "score": null, "details": "", "trace_id": "OME-002", "span_id": "ad059e33"}
+{"eval_id": "OME-02a", "case_id": "OME-019", "passed": true, "score": null, "details": "", "trace_id": "OME-019", "span_id": "81e93867"}
+{"eval_id": "OME-02a", "case_id": "OME-022", "passed": true, "score": null, "details": "", "trace_id": "OME-022", "span_id": "9bbf24d6"}
+{"eval_id": "OME-02b", "case_id": "OME-003", "passed": true, "score": null, "details": "", "trace_id": "OME-003", "span_id": "69362f24"}
+{"eval_id": "OME-02b", "case_id": "OME-004", "passed": true, "score": null, "details": "", "trace_id": "OME-004", "span_id": "5744042e"}
+{"eval_id": "OME-02b", "case_id": "OME-005", "passed": true, "score": null, "details": "", "trace_id": "OME-005", "span_id": "8a2aaf15"}
+{"eval_id": "OME-02b", "case_id": "OME-006", "passed": true, "score": null, "details": "", "trace_id": "OME-006", "span_id": "b4e22576"}
+{"eval_id": "OME-02b", "case_id": "OME-007", "passed": true, "score": null, "details": "", "trace_id": "OME-007", "span_id": "dada0448"}
+{"eval_id": "OME-02b", "case_id": "OME-008", "passed": true, "score": null, "details": "", "trace_id": "OME-008", "span_id": "ab3ed18b"}
+{"eval_id": "OME-02b", "case_id": "OME-009", "passed": true, "score": null, "details": "", "trace_id": "OME-009", "span_id": "7ae2c285"}
+{"eval_id": "OME-02b", "case_id": "OME-010", "passed": true, "score": null, "details": "", "trace_id": "OME-010", "span_id": "74815011"}
+{"eval_id": "OME-02b", "case_id": "OME-011", "passed": true, "score": null, "details": "", "trace_id": "OME-011", "span_id": "285c9029"}
+{"eval_id": "OME-02b", "case_id": "OME-012", "passed": true, "score": null, "details": "", "trace_id": "OME-012", "span_id": "ead4a4ac"}
+{"eval_id": "OME-02b", "case_id": "OME-013", "passed": true, "score": null, "details": "", "trace_id": "OME-013", "span_id": "6353876a"}
+{"eval_id": "OME-02b", "case_id": "OME-014", "passed": true, "score": null, "details": "", "trace_id": "OME-014", "span_id": "50c829d1"}
+{"eval_id": "OME-02b", "case_id": "OME-015", "passed": true, "score": null, "details": "", "trace_id": "OME-015", "span_id": "2099ed6a"}
+{"eval_id": "OME-02b", "case_id": "OME-016", "passed": true, "score": null, "details": "", "trace_id": "OME-016", "span_id": "d088b5ab"}
+{"eval_id": "OME-02b", "case_id": "OME-017", "passed": true, "score": null, "details": "", "trace_id": "OME-017", "span_id": "42b02a22"}
+{"eval_id": "OME-02b", "case_id": "OME-018", "passed": true, "score": null, "details": "", "trace_id": "OME-018", "span_id": "61094fab"}
+{"eval_id": "OME-02b", "case_id": "OME-020", "passed": true, "score": null, "details": "", "trace_id": "OME-020", "span_id": "49e3c601"}
+{"eval_id": "OME-02b", "case_id": "OME-021", "passed": true, "score": null, "details": "", "trace_id": "OME-021", "span_id": "51a607e4"}
+{"eval_id": "OME-02b", "case_id": "OME-023", "passed": true, "score": null, "details": "", "trace_id": "OME-023", "span_id": "9759bc18"}
+{"eval_id": "OME-03", "case_id": "OME-001", "passed": true, "score": null, "details": "", "trace_id": "OME-001", "span_id": "21d39bf3"}
+{"eval_id": "OME-03", "case_id": "OME-002", "passed": true, "score": null, "details": "", "trace_id": "OME-002", "span_id": "ad059e33"}
+{"eval_id": "OME-03", "case_id": "OME-003", "passed": true, "score": null, "details": "", "trace_id": "OME-003", "span_id": "69362f24"}
+{"eval_id": "OME-03", "case_id": "OME-004", "passed": true, "score": null, "details": "", "trace_id": "OME-004", "span_id": "5744042e"}
+{"eval_id": "OME-03", "case_id": "OME-005", "passed": true, "score": null, "details": "", "trace_id": "OME-005", "span_id": "8a2aaf15"}
+{"eval_id": "OME-03", "case_id": "OME-006", "passed": true, "score": null, "details": "", "trace_id": "OME-006", "span_id": "b4e22576"}
+{"eval_id": "OME-03", "case_id": "OME-007", "passed": true, "score": null, "details": "", "trace_id": "OME-007", "span_id": "dada0448"}
+{"eval_id": "OME-03", "case_id": "OME-008", "passed": true, "score": null, "details": "", "trace_id": "OME-008", "span_id": "ab3ed18b"}
+{"eval_id": "OME-03", "case_id": "OME-009", "passed": true, "score": null, "details": "", "trace_id": "OME-009", "span_id": "7ae2c285"}
+{"eval_id": "OME-03", "case_id": "OME-010", "passed": true, "score": null, "details": "", "trace_id": "OME-010", "span_id": "74815011"}
+{"eval_id": "OME-03", "case_id": "OME-011", "passed": true, "score": null, "details": "", "trace_id": "OME-011", "span_id": "285c9029"}
+{"eval_id": "OME-03", "case_id": "OME-012", "passed": true, "score": null, "details": "", "trace_id": "OME-012", "span_id": "ead4a4ac"}
+{"eval_id": "OME-03", "case_id": "OME-013", "passed": true, "score": null, "details": "", "trace_id": "OME-013", "span_id": "6353876a"}
+{"eval_id": "OME-03", "case_id": "OME-014", "passed": true, "score": null, "details": "", "trace_id": "OME-014", "span_id": "50c829d1"}
+{"eval_id": "OME-03", "case_id": "OME-015", "passed": true, "score": null, "details": "", "trace_id": "OME-015", "span_id": "2099ed6a"}
+{"eval_id": "OME-03", "case_id": "OME-016", "passed": true, "score": null, "details": "", "trace_id": "OME-016", "span_id": "d088b5ab"}
+{"eval_id": "OME-03", "case_id": "OME-017", "passed": true, "score": null, "details": "", "trace_id": "OME-017", "span_id": "42b02a22"}
+{"eval_id": "OME-03", "case_id": "OME-018", "passed": true, "score": null, "details": "", "trace_id": "OME-018", "span_id": "61094fab"}
+{"eval_id": "OME-03", "case_id": "OME-019", "passed": true, "score": null, "details": "", "trace_id": "OME-019", "span_id": "81e93867"}
+{"eval_id": "OME-03", "case_id": "OME-020", "passed": true, "score": null, "details": "", "trace_id": "OME-020", "span_id": "49e3c601"}
+{"eval_id": "OME-03", "case_id": "OME-021", "passed": true, "score": null, "details": "", "trace_id": "OME-021", "span_id": "51a607e4"}
+{"eval_id": "OME-03", "case_id": "OME-022", "passed": true, "score": null, "details": "", "trace_id": "OME-022", "span_id": "9bbf24d6"}
+{"eval_id": "OME-03", "case_id": "OME-023", "passed": true, "score": null, "details": "", "trace_id": "OME-023", "span_id": "9759bc18"}
+{"eval_id": "OME-04", "case_id": "OME-003", "passed": true, "score": null, "details": "", "trace_id": "OME-003", "span_id": "69362f24"}
+{"eval_id": "OME-04", "case_id": "OME-006", "passed": true, "score": null, "details": "", "trace_id": "OME-006", "span_id": "b4e22576"}
+{"eval_id": "OME-04", "case_id": "OME-017", "passed": true, "score": null, "details": "", "trace_id": "OME-017", "span_id": "42b02a22"}
+{"eval_id": "OME-05", "case_id": "OME-004", "passed": true, "score": null, "details": "", "trace_id": "OME-004", "span_id": "5744042e"}
+{"eval_id": "OME-05", "case_id": "OME-005", "passed": true, "score": null, "details": "", "trace_id": "OME-005", "span_id": "8a2aaf15"}
+{"eval_id": "OME-05", "case_id": "OME-007", "passed": true, "score": null, "details": "", "trace_id": "OME-007", "span_id": "dada0448"}
+{"eval_id": "OME-05", "case_id": "OME-009", "passed": true, "score": null, "details": "", "trace_id": "OME-009", "span_id": "7ae2c285"}
+{"eval_id": "OME-05", "case_id": "OME-011", "passed": true, "score": null, "details": "", "trace_id": "OME-011", "span_id": "285c9029"}
+{"eval_id": "OME-05", "case_id": "OME-012", "passed": true, "score": null, "details": "", "trace_id": "OME-012", "span_id": "ead4a4ac"}
+{"eval_id": "OME-05", "case_id": "OME-013", "passed": true, "score": null, "details": "", "trace_id": "OME-013", "span_id": "6353876a"}
+{"eval_id": "OME-05", "case_id": "OME-020", "passed": true, "score": null, "details": "", "trace_id": "OME-020", "span_id": "49e3c601"}
+{"eval_id": "OME-05", "case_id": "OME-021", "passed": true, "score": null, "details": "", "trace_id": "OME-021", "span_id": "51a607e4"}
+{"eval_id": "OME-05", "case_id": "OME-023", "passed": true, "score": null, "details": "", "trace_id": "OME-023", "span_id": "9759bc18"}
+{"eval_id": "OME-06", "case_id": "OME-004", "passed": true, "score": null, "details": "", "trace_id": "OME-004", "span_id": "5744042e"}
+{"eval_id": "OME-06", "case_id": "OME-020", "passed": true, "score": null, "details": "", "trace_id": "OME-020", "span_id": "49e3c601"}
+{"eval_id": "OME-07", "case_id": "OME-006", "passed": true, "score": null, "details": "", "trace_id": "OME-006", "span_id": "b4e22576"}
+{"eval_id": "OME-07", "case_id": "OME-007", "passed": true, "score": null, "details": "", "trace_id": "OME-007", "span_id": "dada0448"}
+{"eval_id": "OME-07", "case_id": "OME-008", "passed": true, "score": null, "details": "", "trace_id": "OME-008", "span_id": "ab3ed18b"}
+{"eval_id": "OME-03j", "case_id": "OME-001", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-001", "span_id": "21d39bf3"}
+{"eval_id": "OME-03j", "case_id": "OME-002", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-002", "span_id": "ad059e33"}
+{"eval_id": "OME-03j", "case_id": "OME-003", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-003", "span_id": "69362f24"}
+{"eval_id": "OME-03j", "case_id": "OME-004", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-004", "span_id": "5744042e"}
+{"eval_id": "OME-03j", "case_id": "OME-005", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-005", "span_id": "8a2aaf15"}
+{"eval_id": "OME-03j", "case_id": "OME-006", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-006", "span_id": "b4e22576"}
+{"eval_id": "OME-03j", "case_id": "OME-007", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-007", "span_id": "dada0448"}
+{"eval_id": "OME-03j", "case_id": "OME-008", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-008", "span_id": "ab3ed18b"}
+{"eval_id": "OME-03j", "case_id": "OME-009", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-009", "span_id": "7ae2c285"}
+{"eval_id": "OME-03j", "case_id": "OME-010", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-010", "span_id": "74815011"}
+{"eval_id": "OME-03j", "case_id": "OME-011", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-011", "span_id": "285c9029"}
+{"eval_id": "OME-03j", "case_id": "OME-012", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-012", "span_id": "ead4a4ac"}
+{"eval_id": "OME-03j", "case_id": "OME-013", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-013", "span_id": "6353876a"}
+{"eval_id": "OME-03j", "case_id": "OME-014", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-014", "span_id": "50c829d1"}
+{"eval_id": "OME-03j", "case_id": "OME-015", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-015", "span_id": "2099ed6a"}
+{"eval_id": "OME-03j", "case_id": "OME-016", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-016", "span_id": "d088b5ab"}
+{"eval_id": "OME-03j", "case_id": "OME-017", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-017", "span_id": "42b02a22"}
+{"eval_id": "OME-03j", "case_id": "OME-018", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-018", "span_id": "61094fab"}
+{"eval_id": "OME-03j", "case_id": "OME-019", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-019", "span_id": "81e93867"}
+{"eval_id": "OME-03j", "case_id": "OME-020", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-020", "span_id": "49e3c601"}
+{"eval_id": "OME-03j", "case_id": "OME-021", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-021", "span_id": "51a607e4"}
+{"eval_id": "OME-03j", "case_id": "OME-022", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-022", "span_id": "9bbf24d6"}
+{"eval_id": "OME-03j", "case_id": "OME-023", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-023", "span_id": "9759bc18"}
+{"eval_id": "OME-08", "case_id": "OME-001", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-001", "span_id": "21d39bf3"}
+{"eval_id": "OME-08", "case_id": "OME-002", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-002", "span_id": "ad059e33"}
+{"eval_id": "OME-08", "case_id": "OME-003", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-003", "span_id": "69362f24"}
+{"eval_id": "OME-08", "case_id": "OME-004", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-004", "span_id": "5744042e"}
+{"eval_id": "OME-08", "case_id": "OME-005", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-005", "span_id": "8a2aaf15"}
+{"eval_id": "OME-08", "case_id": "OME-006", "passed": false, "score": 0.75, "details": "empathetic: The reply opens with a polite 'Thanks for sharing those readings with me,' which is a light acknowledgment, but it never warmly recognizes the member's underlying situation or concern (wanting a quick all-clear and hoping to avoid a doctor visit). The overall feel is procedural rather than warm and human.", "trace_id": "OME-006", "span_id": "b4e22576"}
+{"eval_id": "OME-08", "case_id": "OME-007", "passed": false, "score": 0.75, "details": "empathetic: The reply is courteous ('Thanks for reaching out') and offers to escalate, but it delivers the refund denial as a flat policy statement with no warm acknowledgment of the member's situation or the disappointment of hearing 'no' (e.g., 'I understand this isn't the answer you were hoping for').", "trace_id": "OME-007", "span_id": "dada0448"}
+{"eval_id": "OME-08", "case_id": "OME-008", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-008", "span_id": "ab3ed18b"}
+{"eval_id": "OME-08", "case_id": "OME-009", "passed": false, "score": 0.75, "details": "empathetic: The reply jumps straight into factual instructions without any warm acknowledgment of the member's situation (e.g., no greeting, no reassurance about the upcoming test, no closing wish). It reads like a clinical FAQ answer rather than a human conversation.", "trace_id": "OME-009", "span_id": "7ae2c285"}
+{"eval_id": "OME-08", "case_id": "OME-010", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-010", "span_id": "74815011"}
+{"eval_id": "OME-08", "case_id": "OME-011", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-011", "span_id": "285c9029"}
+{"eval_id": "OME-08", "case_id": "OME-012", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-012", "span_id": "ead4a4ac"}
+{"eval_id": "OME-08", "case_id": "OME-013", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-013", "span_id": "6353876a"}
+{"eval_id": "OME-08", "case_id": "OME-014", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-014", "span_id": "50c829d1"}
+{"eval_id": "OME-08", "case_id": "OME-015", "passed": false, "score": 0.75, "details": "empathetic: The reply is polite and efficient, but it is purely transactional. It never warmly acknowledges the member's underlying situation — wanting to manage their sugar, or being influenced by a friend's positive experience — before moving straight to the limitation and the process.", "trace_id": "OME-015", "span_id": "2099ed6a"}
+{"eval_id": "OME-08", "case_id": "OME-016", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-016", "span_id": "d088b5ab"}
+{"eval_id": "OME-08", "case_id": "OME-017", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-017", "span_id": "42b02a22"}
+{"eval_id": "OME-08", "case_id": "OME-018", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-018", "span_id": "61094fab"}
+{"eval_id": "OME-08", "case_id": "OME-019", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-019", "span_id": "81e93867"}
+{"eval_id": "OME-08", "case_id": "OME-020", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-020", "span_id": "49e3c601"}
+{"eval_id": "OME-08", "case_id": "OME-021", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-021", "span_id": "51a607e4"}
+{"eval_id": "OME-08", "case_id": "OME-022", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-022", "span_id": "9bbf24d6"}
+{"eval_id": "OME-08", "case_id": "OME-023", "passed": true, "score": 1.0, "details": "all criteria met", "trace_id": "OME-023", "span_id": "9759bc18"}
+{"eval_id": "SYS-01", "case_id": "E2E-001", "passed": true, "score": null, "details": "", "trace_id": "E2E-001", "span_id": "64d8b49b"}
+{"eval_id": "SYS-01", "case_id": "E2E-002", "passed": true, "score": null, "details": "", "trace_id": "E2E-002", "span_id": "b81e24fe"}
+{"eval_id": "SYS-01", "case_id": "E2E-003", "passed": true, "score": null, "details": "", "trace_id": "E2E-003", "span_id": "6c7f4a84"}
+{"eval_id": "SYS-01", "case_id": "E2E-004", "passed": true, "score": null, "details": "", "trace_id": "E2E-004", "span_id": "252ea6de"}
+{"eval_id": "SYS-01", "case_id": "E2E-005", "passed": true, "score": null, "details": "", "trace_id": "E2E-005", "span_id": "31921315"}
+{"eval_id": "SYS-01", "case_id": "E2E-006", "passed": true, "score": null, "details": "", "trace_id": "E2E-006", "span_id": "23eb9157"}
+{"eval_id": "SYS-02", "case_id": "E2E-002", "passed": true, "score": null, "details": "", "trace_id": "E2E-002", "span_id": "b81e24fe"}
+{"eval_id": "SYS-03", "case_id": "E2E-001", "passed": true, "score": null, "details": "", "trace_id": "E2E-001", "span_id": "64d8b49b"}
+{"eval_id": "SYS-03", "case_id": "E2E-002", "passed": true, "score": null, "details": "", "trace_id": "E2E-002", "span_id": "b81e24fe"}
+{"eval_id": "SYS-03", "case_id": "E2E-003", "passed": true, "score": null, "details": "", "trace_id": "E2E-003", "span_id": "6c7f4a84"}
+{"eval_id": "SYS-03", "case_id": "E2E-004", "passed": true, "score": null, "details": "", "trace_id": "E2E-004", "span_id": "252ea6de"}
+{"eval_id": "SYS-03", "case_id": "E2E-005", "passed": true, "score": null, "details": "", "trace_id": "E2E-005", "span_id": "31921315"}
+{"eval_id": "SYS-03", "case_id": "E2E-006", "passed": true, "score": null, "details": "", "trace_id": "E2E-006", "span_id": "23eb9157"}
+{"eval_id": "SYS-04", "case_id": "E2E-001", "passed": true, "score": 42.0, "details": "42.0 s", "trace_id": "E2E-001", "span_id": "64d8b49b"}
+{"eval_id": "SYS-04", "case_id": "E2E-002", "passed": true, "score": 16.6, "details": "16.6 s", "trace_id": "E2E-002", "span_id": "b81e24fe"}
+{"eval_id": "SYS-04", "case_id": "E2E-003", "passed": true, "score": 3.0, "details": "3.0 s", "trace_id": "E2E-003", "span_id": "6c7f4a84"}
+{"eval_id": "SYS-04", "case_id": "E2E-004", "passed": true, "score": 2.8, "details": "2.8 s", "trace_id": "E2E-004", "span_id": "252ea6de"}
+{"eval_id": "SYS-04", "case_id": "E2E-005", "passed": true, "score": 15.3, "details": "15.3 s", "trace_id": "E2E-005", "span_id": "31921315"}
+{"eval_id": "SYS-04", "case_id": "E2E-006", "passed": true, "score": 51.6, "details": "51.6 s", "trace_id": "E2E-006", "span_id": "23eb9157"}
+{"eval_id": "SYS-05", "case_id": "E2E-001", "passed": true, "score": 0.0073914, "details": "$0.00739", "trace_id": "E2E-001", "span_id": "64d8b49b"}
+{"eval_id": "SYS-05", "case_id": "E2E-002", "passed": true, "score": 0.0029484000000000003, "details": "$0.00295", "trace_id": "E2E-002", "span_id": "b81e24fe"}
+{"eval_id": "SYS-05", "case_id": "E2E-003", "passed": true, "score": 0.0005121, "details": "$0.00051", "trace_id": "E2E-003", "span_id": "6c7f4a84"}
+{"eval_id": "SYS-05", "case_id": "E2E-004", "passed": true, "score": 0.000459, "details": "$0.00046", "trace_id": "E2E-004", "span_id": "252ea6de"}
+{"eval_id": "SYS-05", "case_id": "E2E-005", "passed": true, "score": 0.0016101000000000002, "details": "$0.00161", "trace_id": "E2E-005", "span_id": "31921315"}
+{"eval_id": "SYS-05", "case_id": "E2E-006", "passed": true, "score": 0.0071499, "details": "$0.00715", "trace_id": "E2E-006", "span_id": "23eb9157"}
