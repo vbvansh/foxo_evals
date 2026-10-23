@@ -15,6 +15,8 @@ class Prompt(BaseModel):
     date: date
     changelog: str
     text: str
+    # Judge prompts only: criterion id -> what passing means.
+    criteria: dict[str, str] = {}
 
 
 @lru_cache

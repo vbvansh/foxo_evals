@@ -9,6 +9,7 @@ from foxo_evals.llm.client import (
     MissingRecordingError,
     cost_usd,
     extract_json,
+    prune_recordings,
     recording_key,
 )
 from foxo_evals.tracing import Tracer
@@ -121,3 +122,17 @@ def test_recording_key_changes_with_prompt_version_and_model():
 
 def test_extract_json_strips_fences_and_chatter():
     assert json.loads(extract_json('Sure!\n```json\n{"value": 7}\n```')) == {"value": 7}
+
+
+def test_prune_keeps_only_recordings_a_run_used(tmp_path):
+    recordings = tmp_path / "recordings"
+    old = LLMClient("deepseek-v4.1-flash", Tracer(), mode="record", recordings_dir=recordings, post=FakeAPI('{"value": 1}'))
+    old.complete_json("Old prompt.", "value is 1", Answer, agent="test", prompt_version="v1")
+    tracer = Tracer(tmp_path / "traces.jsonl")
+    new = LLMClient("deepseek-v4.1-flash", tracer, mode="record", recordings_dir=recordings, post=FakeAPI('{"value": 2}'))
+    with tracer.trace("CASE-1"):
+        new.complete_json("New prompt.", "value is 2", Answer, agent="test", prompt_version="v1")
+
+    removed = prune_recordings([tmp_path / "traces.jsonl"], recordings)
+    assert len(removed) == 1
+    assert [p.stem for p in recordings.rglob("*.json")] == tracer.spans[0].recording_keys

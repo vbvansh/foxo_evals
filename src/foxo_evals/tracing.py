@@ -36,6 +36,8 @@ class Span(BaseModel):
     latency_ms: float | None = None
     status: str = "ok"
     error: str | None = None
+    # LLM calls only: the recordings/ files this call read or wrote.
+    recording_keys: list[str] = []
 
     def set_output(self, value: Any) -> None:
         self.output_summary = summarise(value)
@@ -68,12 +70,16 @@ class Tracer:
         self.spans: list[Span] = []
         self.trace_id = "untraced"
         self._stack: list[Span] = []
-        self._count = 0
+        self._counts: dict[str, int] = {}
 
     @contextmanager
     def trace(self, trace_id: str) -> Iterator[None]:
-        """One trace per case. Spans are written when the case finishes, in start order."""
-        self.trace_id, self._count = trace_id, 0
+        """One trace per case. Spans are written when the block ends, in start order.
+
+        A trace can be reopened (judges add spans after the agents ran); span
+        numbering continues where it left off, so ids never repeat.
+        """
+        self.trace_id = trace_id
         first = len(self.spans)
         try:
             yield
@@ -96,8 +102,8 @@ class Tracer:
     ) -> Iterator[Span]:
         # Span ids are derived from the trace id and position, so replaying the
         # same run gives the same ids and two runs can be compared line by line.
-        self._count += 1
-        span_id = hashlib.sha1(f"{self.trace_id}:{self._count}".encode()).hexdigest()[:8]
+        count = self._counts[self.trace_id] = self._counts.get(self.trace_id, 0) + 1
+        span_id = hashlib.sha1(f"{self.trace_id}:{count}".encode()).hexdigest()[:8]
         span = Span(
             trace_id=self.trace_id,
             span_id=span_id,

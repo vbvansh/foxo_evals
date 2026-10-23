@@ -19,7 +19,7 @@ import httpx
 from pydantic import BaseModel, ValidationError
 
 from foxo_evals.config import MODE, OPENCODE_BASE_URL, PRICES, RECORDINGS_DIR
-from foxo_evals.tracing import Tracer
+from foxo_evals.tracing import Tracer, load_spans
 
 Mode = Literal["live", "record", "replay"]
 T = TypeVar("T", bound=BaseModel)
@@ -137,8 +137,9 @@ class LLMClient:
             agent, "llm_call", input=user, prompt_version=prompt_version, model=self.model
         ) as span:
             for _ in range(2):
-                text, call_usage = self._chat(messages, agent, prompt_version)
+                text, call_usage, key = self._chat(messages, agent, prompt_version)
                 usage += call_usage
+                span.recording_keys.append(key)
                 span.tokens_in, span.tokens_out = usage.tokens_in, usage.tokens_out
                 span.cost_usd, span.latency_ms = usage.cost_usd, usage.latency_ms
                 try:
@@ -157,7 +158,7 @@ class LLMClient:
                 f"{agent} output did not match {schema.__name__} after one retry: {last_error}"
             ) from last_error
 
-    def _chat(self, messages: list[dict], agent: str, prompt_version: str) -> tuple[str, Usage]:
+    def _chat(self, messages: list[dict], agent: str, prompt_version: str) -> tuple[str, Usage, str]:
         key = recording_key(agent, prompt_version, self.model, messages)
         path = self.recordings_dir / agent / f"{key}.json"
 
@@ -169,7 +170,7 @@ class LLMClient:
                     "Run in record mode to create it."
                 )
             saved = json.loads(path.read_text(encoding="utf-8"))
-            return saved["response"], Usage.model_validate(saved["usage"])
+            return saved["response"], Usage.model_validate(saved["usage"]), key
 
         start = time.perf_counter()
         data = self.post(
@@ -204,4 +205,13 @@ class LLMClient:
                 "usage": usage.model_dump(),
             }
             path.write_text(json.dumps(saved, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        return text, usage
+        return text, usage, key
+
+
+def prune_recordings(traces: list[Path], recordings_dir: Path = RECORDINGS_DIR) -> list[Path]:
+    """Delete recordings that none of the given runs used, e.g. answers to an old prompt."""
+    keep = {key for path in traces for span in load_spans(path) for key in span.recording_keys}
+    unused = [path for path in recordings_dir.rglob("*.json") if path.stem not in keep]
+    for path in unused:
+        path.unlink()
+    return unused
