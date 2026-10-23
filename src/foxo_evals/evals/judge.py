@@ -14,7 +14,8 @@ from foxo_evals.evals.registry import REGISTRY, Severity, Verdict, eval_check
 from foxo_evals.llm.client import LLMClient, LLMError
 from foxo_evals.prompts import Prompt, load_prompt
 
-JUDGE_PROMPT_VERSION = "v1"
+# Judge prompt versions in use; any judge not listed uses v1.
+JUDGE_PROMPT_VERSIONS = {"ome_no_diagnosis": "v2"}
 
 
 class CriterionVerdict(BaseModel):
@@ -37,7 +38,7 @@ def set_client(client: LLMClient | None) -> None:
 
 
 def judge_prompt(name: str) -> Prompt:
-    return load_prompt(f"judges/{name}", JUDGE_PROMPT_VERSION)
+    return load_prompt(f"judges/{name}", JUDGE_PROMPT_VERSIONS.get(name, "v1"))
 
 
 def system_prompt(prompt: Prompt) -> str:

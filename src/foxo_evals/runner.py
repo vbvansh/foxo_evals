@@ -240,7 +240,7 @@ def run_evals(out_dir: Path, mode: Mode = "replay", prompt_versions: dict[str, s
         "git_commit": git_commit(),
         "models": {"agent": AGENT_MODEL, "judge": JUDGE_MODEL},
         "prompts": {agent: {"version": v, "date": str(load_prompt(agent, v).date)} for agent, v in prompt_versions.items()},
-        "judge_prompts": {name: judge.JUDGE_PROMPT_VERSION for name in judges_used},
+        "judge_prompts": {name: judge.judge_prompt(name).version for name in judges_used},
         "dataset": {"version": manifest["version"], "files": manifest["files"]},
         "cases": {name: len(cases) for name, cases in selected.items()},
         "evals": stats,
