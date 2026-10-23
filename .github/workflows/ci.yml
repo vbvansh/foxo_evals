@@ -1,0 +1,21 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: make setup
+      - run: make test
+      - run: make check-data
+      # Replays recorded responses: no API key needed. Fails if the gate fails.
+      - run: make eval
+      # Fails on any critical regression or major pass-rate drop against the committed baseline.
+      - run: make compare A=runs/baseline_v1 B=runs/latest
