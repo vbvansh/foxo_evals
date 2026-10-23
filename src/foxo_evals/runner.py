@@ -23,7 +23,7 @@ from pydantic import BaseModel, ValidationError
 from foxo_evals.config import AGENT_MODEL, JUDGE_MODEL, ROOT
 from foxo_evals.datasets.loader import DatasetError, check_data, load_dataset, read_manifest
 from foxo_evals.datasets.schemas import CASE_TYPES, Case
-from foxo_evals.evals import coach_evals, doctor_evals, mood_evals, ome_evals, system_evals  # noqa: F401 (registers evals)
+from foxo_evals.evals import coach_evals, doctor_evals, judge, mood_evals, ome_evals, system_evals  # noqa: F401 (registers evals)
 from foxo_evals.evals.registry import REGISTRY, EvalResult
 from foxo_evals.evals.system_evals import journey_latency_ms
 from foxo_evals.llm.client import LLMClient, LLMError, Mode
@@ -101,7 +101,17 @@ def evaluate(runs: list[CaseRun], tracer: Tracer) -> list[EvalResult]:
                 ))
                 continue
             try:
-                results.append(spec.run(run.case, run.output, trace))
+                if spec.kind == "judge":
+                    # Reopen the case's trace so the judge's own LLM call is traced with it.
+                    with tracer.trace(run.case.case_id):
+                        results.append(spec.run(run.case, run.output, trace))
+                else:
+                    results.append(spec.run(run.case, run.output, trace))
+            except LLMError as error:
+                results.append(EvalResult(
+                    eval_id=spec.id, case_id=run.case.case_id, passed=False,
+                    details=f"judge call failed: {type(error).__name__}: {error}", trace_id=run.case.case_id,
+                ))
             except Exception as error:  # a broken check is a failed check, never a crashed run
                 results.append(EvalResult(
                     eval_id=spec.id, case_id=run.case.case_id, passed=False,
@@ -196,8 +206,11 @@ def write_jsonl(path: Path, rows: list[dict]) -> None:
 
 
 def run_evals(out_dir: Path, mode: Mode = "replay", prompt_versions: dict[str, str] | None = None,
-              llm: Any = None) -> dict:
-    """Run everything and write the run folder. Refuses to run on data that doesn't match the manifest."""
+              llm: Any = None, judge_llm: Any = None, datasets: list[str] | None = None) -> dict:
+    """Run everything and write the run folder. Refuses to run on data that doesn't match the manifest.
+
+    `datasets` limits the run to some datasets, e.g. ["doctor"] while iterating on the Doctor prompt.
+    """
     problems = check_data()
     if problems:
         raise DatasetError("Dataset check failed:\n" + "\n".join(problems))
@@ -209,13 +222,17 @@ def run_evals(out_dir: Path, mode: Mode = "replay", prompt_versions: dict[str, s
     tracer = Tracer(out_dir / "traces.jsonl")
     ctx = AgentContext(llm=llm or LLMClient(AGENT_MODEL, tracer, mode=mode), tracer=tracer,
                        prompt_versions=prompt_versions)
-    datasets = {name: load_dataset(name) for name in CASE_TYPES}
-    runs = run_cases(datasets, ctx)
+    judge.set_client(judge_llm or LLMClient(JUDGE_MODEL, tracer, mode=mode))
+    selected = {name: load_dataset(name) for name in (datasets or CASE_TYPES)}
+    runs = run_cases(selected, ctx)
     results = evaluate(runs, tracer)
 
     stats = eval_stats(results)
     manifest = read_manifest()
     e2e_latencies = [journey_latency_ms(tracer.spans_for(r.case.case_id)) for r in runs if r.dataset == "e2e"]
+    llm_calls = [s for s in tracer.spans if s.step == "llm_call"]
+    judge_cost = sum(s.cost_usd for s in llm_calls if s.agent.startswith("judges/"))
+    judges_used = sorted({spec.judge for spec in REGISTRY.values() if spec.judge})
     summary = {
         "run_id": out_dir.name,
         "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -223,12 +240,14 @@ def run_evals(out_dir: Path, mode: Mode = "replay", prompt_versions: dict[str, s
         "git_commit": git_commit(),
         "models": {"agent": AGENT_MODEL, "judge": JUDGE_MODEL},
         "prompts": {agent: {"version": v, "date": str(load_prompt(agent, v).date)} for agent, v in prompt_versions.items()},
+        "judge_prompts": {name: judge.JUDGE_PROMPT_VERSION for name in judges_used},
         "dataset": {"version": manifest["version"], "files": manifest["files"]},
-        "cases": {name: len(cases) for name, cases in datasets.items()},
+        "cases": {name: len(cases) for name, cases in selected.items()},
         "evals": stats,
         "severity": severity_stats(stats),
         "ome_routing": ome_routing(runs),
-        "cost_usd": round(sum(s.cost_usd for s in tracer.spans if s.step == "llm_call"), 6),
+        "cost_usd": round(sum(s.cost_usd for s in llm_calls), 6),
+        "judge_cost_usd": round(judge_cost, 6),
         "journey_latency_ms": {
             "p50": round(statistics.median(e2e_latencies), 1) if e2e_latencies else None,
             "p95": round(percentile(e2e_latencies, 95), 1) if e2e_latencies else None,

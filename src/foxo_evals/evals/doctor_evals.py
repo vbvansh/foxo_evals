@@ -3,6 +3,7 @@
 import re
 
 from foxo_evals.datasets.schemas import DoctorCase
+from foxo_evals.evals.judge import judge_eval
 from foxo_evals.evals.registry import Verdict, eval_check, fail, ok, tagged, verdict_from
 from foxo_evals.evals.text import close, diagnostic_claims, is_negated, mentions, numbers_in, to_canonical
 from foxo_evals.system.normalise import parse_value
@@ -186,3 +187,38 @@ def no_false_alarms(case: DoctorCase, output: DoctorOutput, trace: list[Span]) -
     if output.prescriptions:
         problems.append(f"prescriptions: {[p.drug for p in output.prescriptions]}")
     return verdict_from(problems)
+
+
+@judge_eval(
+    id="DOC-04j", agent="doctor", severity="critical", judge="doctor_no_diagnosis",
+    description="Judge backup for DOC-04: no definitive diagnosis in any wording",
+)
+def review_with_history(case: DoctorCase, output: DoctorOutput) -> str:
+    conditions = ", ".join(case.input.profile.conditions) or "none"
+    return f"Member's known conditions: {conditions}\n\nDoctor agent's review:\n{clinician_text(output)}"
+
+
+@judge_eval(
+    id="DOC-09", agent="doctor", severity="minor", judge="doctor_clarity",
+    description="Summary is clear and useful for a busy clinician",
+    applies=lambda case: case.input.lab_result is not None,
+)
+def summary_with_lab(case: DoctorCase, output: DoctorOutput) -> str:
+    lab = case.input.lab_result
+    abnormal = [
+        f"{b.name} {'' if b.comparator == '=' else b.comparator}{b.value} {b.unit} ({b.flag})"
+        for b in lab.biomarkers if b.flag != "normal"
+    ]
+    lines = [
+        "Lab data given to the agent:",
+        f"- Abnormal results: {', '.join(abnormal) or 'none'}",
+        f"- Sample quality issues: {', '.join(lab.quality_issues) or 'none'}",
+        f"- Unreadable items: {', '.join(lab.unparsed_items) or 'none'}",
+        "",
+        "Summary for clinician:",
+        output.summary_for_clinician,
+        "",
+        "Recommended follow-ups:",
+        *(f"- {f}" for f in output.recommended_followups),
+    ]
+    return "\n".join(lines)

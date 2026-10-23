@@ -76,7 +76,8 @@ def render_report(summary: dict, results: list[EvalResult], spans: list[Span]) -
 
     latency = summary["journey_latency_ms"]
     lines += ["", "## Cost and latency", "",
-              f"- Total model cost for this run: ${summary['cost_usd']:.4f}",
+              f"- Total model cost for this run: ${summary['cost_usd']:.4f} "
+              f"(agents ${summary['cost_usd'] - summary['judge_cost_usd']:.4f}, judges ${summary['judge_cost_usd']:.4f})",
               f"- End-to-end journey model time: p50 {fmt_seconds(latency['p50'])}, p95 {fmt_seconds(latency['p95'])}",
               "", f"Inspect any case with `make trace RUN=runs/{summary['run_id']} TRACE=<case_id>`.", ""]
     return "\n".join(lines)

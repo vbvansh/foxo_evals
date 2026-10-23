@@ -65,6 +65,9 @@ class EvalSpec:
     applies: Callable[[Any], bool]
     step: str
     threshold: float
+    # Judge evals only: which judge prompt, and the function that builds what it reads.
+    judge: str | None = None
+    subject: Callable[[Any, Any], str] | None = None
 
     @property
     def dataset(self) -> str:
