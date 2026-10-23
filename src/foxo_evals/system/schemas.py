@@ -18,11 +18,14 @@ Urgency = Literal["routine", "soon", "emergency"]
 Handoff = Literal["none", "mood", "doctor", "coach", "human_clinician"]
 Flag = Literal["low", "normal", "high", "critical_low", "critical_high"]
 Comparator = Literal["=", "<", ">"]
+Specialty = Literal[
+    "general_physician", "cardiology", "endocrinology", "nephrology", "gastroenterology", "haematology"
+]
 
 
 class MemberProfile(BaseModel):
     member_id: str
-    name: str | None = None
+    full_name: str | None = None
     phone: str | None = None
     age: int
     sex: Sex
@@ -95,7 +98,7 @@ class LabResult(BaseModel):
 
 class BookAppointmentCall(BaseModel):
     tool: Literal["book_appointment"]
-    specialty: str
+    specialty: Specialty
     urgency: Urgency
     reason: str
 
@@ -114,7 +117,7 @@ ToolCall = Annotated[BookAppointmentCall | DraftPrescriptionCall, Field(discrimi
 class Appointment(BaseModel):
     appointment_id: str
     member_id: str
-    specialty: str
+    specialty: Specialty
     urgency: Urgency
     reason: str
     status: Literal["booked"] = "booked"
@@ -182,3 +185,22 @@ class CoachPlan(BaseModel):
     activity: str
     sleep: str
     retest_in_weeks: int
+
+
+# Journey
+
+class JourneyInput(BaseModel):
+    message: MemberMessage
+    profile: MemberProfile
+    lab_report: LabReportRaw | None = None
+
+
+class JourneyResult(BaseModel):
+    """Everything one member journey produced, in the order the agents ran."""
+
+    trajectory: list[str] = []
+    ome: OmeResponse | None = None
+    lab_result: LabResult | None = None
+    doctor: DoctorOutput | None = None
+    coach: CoachPlan | None = None
+    error: str | None = None
