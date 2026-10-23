@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:36:32+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: tsh 7.8 mIU/L (high), vitamin_d 18.0 ng/mL (low)\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\n- TSH 7.8 mIU/L (high, ref 0.4-4.0) in a member already on levothyroxine 50 mcg — may suggest under-replacement; needs clinical correlation with adherence and dose review.\n- Vitamin D 18.0 ng/mL (low, ref 30.0-100.0) — consistent with vitamin D deficiency; supplementation to be considered.\n- Haemoglobin 12.4 g/dL is within range; no critical values and no sample quality issues reported.\n\nRecommended follow-ups:\n- Repeat thyroid function tests as advised by the clinician to confirm TSH trend\n- Vitamin D supplementation and repeat vitamin D level per clinician guidance"
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"The summary opens with the elevated TSH in a member on levothyroxine, which is the most clinically significant finding since it suggests under-replacement and prompts dose review. The vitamin D deficiency follows, and there are no critical values to prioritize.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is three short bullets plus two follow-up lines, easily readable in under a minute. Each finding is stated once with reference ranges and brief interpretation, with no padding or repetition.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Next steps are clear: repeat thyroid function tests to confirm the TSH trend with attention to adherence and dose review, plus vitamin D supplementation and a repeat level. The clinician can immediately see what to do.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contains no sample quality issues or unreadable items, so there is nothing to flag; the summary even explicitly confirms no sample quality issues were reported.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 572,
+    "tokens_out": 621,
+    "latency_ms": 6266.4,
+    "cost_usd": 0.0035332
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:34:55+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: ldl 168.0 mg/dL (high), total_cholesterol 245.0 mg/dL (high)\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\n- LDL cholesterol 168 mg/dL (ref high 100) and total cholesterol 245 mg/dL (ref high 200) are both elevated; may suggest an atherogenic lipid pattern, needs clinical correlation.\n- Member reports a paternal history of myocardial infarction at age 55 and has asked to be started on a cholesterol-lowering tablet; a treatment decision is best made after cardiology assessment.\n- HDL 52 mg/dL, triglycerides 140 mg/dL and fasting glucose 90 mg/dL are within reference; no critical values, sample quality issues or medication interactions flagged.\n\nRecommended follow-ups:\n- Cardiology review of the elevated LDL and total cholesterol, including consideration of a formal cardiovascular risk assessment given the family history.\n- Repeat lipid panel to confirm the abnormal values before any long-term treatment decision.\n- Lifestyle measures (diet and physical activity) to be discussed with the lifestyle coach while awaiting cardiology review."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"The summary opens with the two abnormal findings (LDL 168, total cholesterol 245), which are the most important results. There are no critical values in this dataset, so leading with the abnormal lipids is appropriate prioritization.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is roughly 150 words across three bullets plus three short follow-ups, easily readable in under a minute. The normal values (HDL, triglycerides, glucose) are covered in a single brief line with no repetition or padding.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Next steps are explicit and concrete: cardiology review with formal cardiovascular risk assessment, a repeat lipid panel before long-term treatment decisions, and lifestyle measures via the lifestyle coach. The clinician knows exactly what to arrange.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contains no sample quality issues or unreadable items, so this criterion passes by default; the summary even affirmatively states that no critical values or sample quality issues were flagged, which reassures the reader.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 623,
+    "tokens_out": 735,
+    "latency_ms": 14778.1,
+    "cost_usd": 0.0041062
+  }
+}

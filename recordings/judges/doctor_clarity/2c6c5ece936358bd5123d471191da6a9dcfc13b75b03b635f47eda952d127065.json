@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:22:01+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: potassium 5.8 mmol/L (high)\n- Sample quality issues: haemolysed\n- Unreadable items: none\n\nSummary for clinician:\n47-year-old male with no known conditions or medications. Serum potassium is raised at 5.8 mmol/L (ref 3.5–5.1 mmol/L), but the sample is flagged as haemolysed, which can falsely raise potassium; the value needs clinical correlation and confirmation on a repeat, non-haemolysed sample. Creatinine (0.9 mg/dL) and fasting glucose (91 mg/dL) are both within reference range, so there is no biochemical evidence of renal impairment on this panel, though a spurious potassium elevation cannot be excluded either way. No critical flags, no reported medication interactions and no unread items. Recommend nephrology review (soon) and a repeat potassium to confirm.\n\nRecommended follow-ups:\n- Repeat serum potassium on a non-haemolysed sample to confirm the 5.8 mmol/L result.\n- Nephrology review (soon) for the raised potassium.\n- Clinical correlation for possible hyperkalaemia, including review of any dietary or supplement sources of potassium."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"After a single line of patient context, the summary immediately presents the only abnormal finding (raised potassium) together with the haemolysis caveat, before the normal creatinine and glucose results. No critical values were present in the data, so nothing was buried or reordered.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is roughly 90 words and easily read in under a minute. There is minor redundancy (the repeat-sample recommendation appears in both the summary and the follow-up list, and the 'spurious elevation cannot be excluded either way' clause is convoluted), but there is no substantive padding.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Next steps are explicit and specific: repeat potassium on a non-haemolysed sample, nephrology review, and clinical correlation including dietary/supplement review. The clinician knows exactly what to order and do after reading.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The haemolysed sample is prominently flagged with an explanation of how it can falsely elevate potassium, and the summary explicitly confirms there are no unread items, matching the lab data.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 636,
+    "tokens_out": 1303,
+    "latency_ms": 12690.6,
+    "cost_usd": 0.0066236
+  }
+}

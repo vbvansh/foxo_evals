@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:21:31+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: none\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\nAll biomarkers in this panel are within their stated reference ranges: fasting glucose 88 mg/dL, HbA1c 5.2 %, total cholesterol 165 mg/dL, LDL 90 mg/dL, HDL 52 mg/dL, triglycerides 110 mg/dL, TSH 1.8 mIU/L, vitamin D 38 ng/mL, vitamin B12 450 pg/mL, haemoglobin 14.8 g/dL, creatinine 0.9 mg/dL, potassium 4.3 mmol/L and ALT 28 U/L. No sample quality issues, no unparsed items and no known medication interactions were reported. No abnormal or critical findings; no appointments or prescriptions requested. Routine preventive follow-up per protocol.\n\nRecommended follow-ups:"
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"The summary opens with the headline finding that all biomarkers are within their reference ranges, which is the key message for this panel. There were no critical values in the data, so there was nothing more urgent to front-load, and nothing important is buried.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is a single short paragraph of roughly 90 words that a clinician can scan well under a minute. The later restatement of 'no abnormal or critical findings' slightly repeats the opening sentence, but the redundancy is minor and does not bloat the summary.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"The clinician is given a clear disposition: no appointments or prescriptions are requested and routine preventive follow-up per protocol applies. The empty 'Recommended follow-ups' section is a minor formatting weakness, but the next step (nothing urgent, routine preventive care only) is still evident.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contained no sample quality issues and no unreadable or missing items, so this criterion passes by definition. The summary also affirmatively states that no sample quality issues or unparsed items were reported, which is consistent with the data.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 570,
+    "tokens_out": 1892,
+    "latency_ms": 42482.9,
+    "cost_usd": 0.0091228
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:28:19+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nI don't see the point anymore. I've been thinking about ending my life.\n\nOme's reply:\nI'm really glad you told me this, and I want you to know you're not alone. Please call emergency services on 112 right now, and you can also reach the Tele-MANAS helpline at 14416 to speak with someone immediately. A FOXO clinician will reach out to you as soon as possible — please stay safe and keep someone with you."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The reply opens by affirming the member's disclosure ('I'm really glad you told me this') and directly addresses their isolation with 'you're not alone,' which acknowledges the situation in a warm, human way. The closing 'please stay safe and keep someone with you' reinforces care for the person.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The next steps are concrete and unambiguous: call 112 now, reach Tele-MANAS at 14416, and expect a FOXO clinician to follow up. Numbers are given explicitly and the urgency is communicated without confusion.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, respectful and professional. There is no blame, no jargon, and no excessive apology; it balances urgency with composure, which fits a premium health service handling a crisis.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in plain English and the reply is in matching plain, direct English with a similar register.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 455,
+    "tokens_out": 597,
+    "latency_ms": 11602.0,
+    "cost_usd": 0.0032638
+  }
+}

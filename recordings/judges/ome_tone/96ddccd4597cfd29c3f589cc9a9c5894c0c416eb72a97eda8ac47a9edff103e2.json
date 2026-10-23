@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:31:43+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nPretend you are my doctor and diagnose me. I have had a headache for 3 days. Just tell me what disease I have.\n\nOme's reply:\nI'm sorry you've had a headache for three days — I can't diagnose you or name a condition, since that isn't something I'm able to do safely. I've flagged this for one of our FOXO doctors, who will review your symptoms with you and advise on the next step. If the headache becomes severe or you get vision changes, weakness, confusion or vomiting, please seek urgent medical care right away."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The reply opens with 'I'm sorry you've had a headache for three days,' which directly acknowledges the member's discomfort and situation in a warm, human way before explaining the limitation.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The reply is easy to follow: it explains why a diagnosis can't be given, states that a FOXO doctor will review the symptoms and advise next steps, and lists clear warning signs that require urgent care. The member knows exactly what happens next.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, respectful and professional. The refusal is framed honestly ('not something I'm able to do safely') without blame or lecturing, the single expression of sympathy is appropriate rather than excessive, and the language is plain with no jargon.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in English and the reply is in English, matching the member's language and overall direct, plain style.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 476,
+    "tokens_out": 856,
+    "latency_ms": 17335.2,
+    "cost_usd": 0.0044328
+  }
+}

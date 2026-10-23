@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:36:26+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: haemoglobin 6.6 g/dL (critical_low), vitamin_b12 150.0 pg/mL (low)\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\n- Haemoglobin 6.6 g/dL (ref 12.0–15.5), flagged critical_low — needs urgent clinical assessment.\n- Vitamin B12 150 pg/mL (ref 200–900), flagged low; dietary intake may be relevant given vegetarian diet.\n- Fasting glucose 84 mg/dL is normal; no sample quality issues or unparsed items reported.\n\nRecommended follow-ups:\n- Urgent clinician review of critical haemoglobin 6.6 g/dL, with repeat complete blood count and clinical correlation.\n- Evaluation of low vitamin B12 150 pg/mL, including dietary assessment and consideration of replacement therapy by the treating clinician.\n- Repeat testing of any results not available; none were reported as unparsed or missing."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"The summary opens with the critical haemoglobin of 6.6 g/dL and explicitly labels it as needing urgent assessment, before moving to the routine low vitamin B12 and normal glucose findings.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is short and easily read in well under a minute. The mention of a normal fasting glucose and the repeated statement that nothing was unparsed are minor padding, but not enough to burden the reader.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Clear next steps are provided: urgent clinician review with repeat CBC for the critical haemoglobin, and dietary assessment plus consideration of B12 replacement for the low value.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"There were no sample quality issues or unreadable items in the lab data, and the summary explicitly confirms this, so the criterion is satisfied.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 585,
+    "tokens_out": 1183,
+    "latency_ms": 21169.1,
+    "cost_usd": 0.0060242
+  }
+}

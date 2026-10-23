@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:35:38+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: glucose_fasting 142.0 mg/dL (high), hdl 48.0 mg/dL (low)\n- Sample quality issues: none\n- Unreadable items: LDL Cholesterol: ##.# mg/dL (unreadable value)\n\nSummary for clinician:\n- Fasting glucose 142.0 mg/dL (high; ref 70–99) in a member with known type 2 diabetes on metformin — may suggest suboptimal glycaemic control, needs clinical correlation.\n- LDL cholesterol was not readable on the report, so the lipid picture is incomplete; repeat lipid panel suggested.\n- HDL 48.0 mg/dL and triglycerides 145.0 mg/dL are only marginally outside/at the reference bounds and are treated as normal variation.\n\nRecommended follow-ups:\n- Repeat LDL cholesterol — the value on this report could not be read and is therefore not available.\n- Consider a repeat fasting glucose or HbA1c to confirm glycaemic status."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"The summary opens with the fasting glucose of 142 mg/dL, which is the most clinically significant finding (suboptimal glycemic control in a diabetic), before addressing the unreadable LDL and the marginal HDL. No critical values were present, so this ordering appropriately front-loads the key abnormal result.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The entire summary and follow-up list is roughly 100 words and can be read in well under a minute. There is minor redundancy in that the unreadable LDL is explained both in the summary and again in the follow-ups, but this is brief and does not meaningfully slow the clinician down.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"The clinician is given clear next steps: repeat the LDL cholesterol (or lipid panel) to complete the lipid picture, and consider a repeat fasting glucose or HbA1c to confirm glycemic status. These are concrete, appropriate actions tied to the findings.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contains one unreadable item (LDL cholesterol), and the summary explicitly flags it, explains that the lipid picture is incomplete as a result, and recommends a repeat. There were no sample quality issues to report.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 590,
+    "tokens_out": 1626,
+    "latency_ms": 15534.9,
+    "cost_usd": 0.0079804
+  }
+}

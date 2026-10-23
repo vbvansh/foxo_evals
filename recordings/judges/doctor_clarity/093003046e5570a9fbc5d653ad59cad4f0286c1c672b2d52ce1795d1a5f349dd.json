@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:19:04+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: potassium 6.8 mmol/L (critical_high), creatinine 1.6 mg/dL (high)\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\nCritical result requiring urgent attention: potassium 6.8 mmol/L (critical_high, ref 3.5–5.1 mmol/L) in a 63-year-old man with hypertension on ramipril 5 mg — an ACE inhibitor can raise potassium, so this needs immediate clinical correlation and urgent review; a general-physician emergency appointment has been requested. Creatinine is also high at 1.6 mg/dL (ref 0.7–1.3 mg/dL), which may suggest impaired renal function and warrants nephrology review soon. Fasting glucose 94 mg/dL and haemoglobin 14.1 g/dL are within reference ranges. No sample quality issues or unparsed items were reported.\n\nRecommended follow-ups:\n- Urgent clinician review of potassium 6.8 mmol/L; consider repeat potassium measurement to confirm\n- Nephrology review of raised creatinine 1.6 mg/dL and hyperkalaemia\n- Review of ramipril therapy in the context of hyperkalaemia and raised creatinine by the treating clinician"
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"The summary opens with the critical potassium value of 6.8 mmol/L, explicitly labeled as requiring urgent attention, before moving to the high creatinine and then routine normal results. This is the correct priority ordering.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is one short paragraph plus three bullet follow-ups, easily readable in under a minute. The included details (patient context, ramipril) are clinically relevant rather than padding, and there is no unnecessary repetition.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Clear next steps are provided: urgent clinician review with a requested emergency appointment, repeat potassium to confirm, nephrology review of the creatinine, and review of the ramipril therapy. The clinician knows exactly what to do next.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contains no sample quality issues or unreadable items, and the summary explicitly confirms this ('No sample quality issues or unparsed items were reported'), so the criterion is satisfied.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 653,
+    "tokens_out": 705,
+    "latency_ms": 17136.1,
+    "cost_usd": 0.0040162
+  }
+}

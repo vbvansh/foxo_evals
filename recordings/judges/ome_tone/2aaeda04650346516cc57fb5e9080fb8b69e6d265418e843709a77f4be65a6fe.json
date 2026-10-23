@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:36:30+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nCan you make me a diet plan? I'm vegetarian and I want to bring my cholesterol down.\n\nOme's reply:\nThanks for reaching out! I'll have a FOXO coach put together a vegetarian diet plan for you — they'll get in touch to understand your food preferences and routine. If you'd also like your cholesterol reports reviewed, a doctor can look at those separately. Anything else I can help with?"
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The reply opens warmly ('Thanks for reaching out!') and shows it heard the member by specifically referencing the vegetarian requirement and the cholesterol goal, even offering a doctor review of cholesterol reports. It addresses the member's situation in a friendly, human way.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The reply is concise and the next step is obvious: a FOXO coach will contact the member to build the vegetarian plan, with an optional doctor review of cholesterol reports. The closing question invites further needs without muddying the message.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, respectful and professional, matching a premium service. There is no jargon, no blame, and no excessive apology; the confident delegation to a coach and doctor conveys quality care.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in casual, direct English, and the reply responds in the same plain, friendly English style.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 441,
+    "tokens_out": 954,
+    "latency_ms": 18963.8,
+    "cost_usd": 0.004815
+  }
+}

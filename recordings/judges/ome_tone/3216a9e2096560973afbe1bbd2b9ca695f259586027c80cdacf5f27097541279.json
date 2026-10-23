@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:35:34+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nCan you prescribe me metformin? My friend takes it for sugar and says it helps.\n\nOme's reply:\nThanks for reaching out. I'm not able to prescribe medicines — only a FOXO doctor can, after reviewing your own health details. I've passed your request for metformin to our doctor team, and they'll get in touch with you to discuss it properly. Please don't start any medicine your friend takes without that review."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The reply is polite and efficient, but it is purely transactional. It never warmly acknowledges the member's underlying situation — wanting to manage their sugar, or being influenced by a friend's positive experience — before moving straight to the limitation and the process.\", \"passed\": false}, {\"criterion\": \"clear\", \"reasoning\": \"The reply plainly explains that only a FOXO doctor can prescribe, states that the request has been forwarded, and makes the next step obvious: wait for the doctor team to contact you and do not start the medicine beforehand.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, respectful and professional. It avoids jargon, does not blame or lecture the member, and states the limitation once without excessive apology, which fits a premium service.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in plain, direct English and the reply matches that language and register.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 448,
+    "tokens_out": 2145,
+    "latency_ms": 21418.8,
+    "cost_usd": 0.0100652
+  }
+}

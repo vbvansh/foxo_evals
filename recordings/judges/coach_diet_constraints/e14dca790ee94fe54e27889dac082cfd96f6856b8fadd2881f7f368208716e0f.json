@@ -1,0 +1,23 @@
+{
+  "agent": "judges/coach_diet_constraints",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:11:58+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review diet recommendations written by FOXO's lifestyle coach for a member in India.\n\nDiet rules: vegetarian means no meat, fish, seafood or eggs. Eggetarian allows eggs. Vegan means no animal products, including dairy, ghee and honey. Jain means vegetarian with no eggs, no honey, no onion or garlic, and no root vegetables (potato, carrot, beetroot, radish, ginger and similar).\n\nYou will see the member's diet, allergies and conditions, and the foods recommended to eat. Judge only the foods recommended to eat. A food mentioned only as something to avoid is fine.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- diet_respected: Every recommended food fits the member's diet, including ingredients hidden in Indian dishes (kadhi has curd, many gravies have onion and garlic, some sweets have egg).\n- allergies_respected: No recommended food contains the member's allergens in any form, such as groundnut oil or chikki for a peanut allergy. Pass if there are no allergies.\n- conditions_respected: No recommended food clashes with the member's conditions, such as sugar, jaggery, honey or sweets for diabetes. Pass if there are no relevant conditions.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Diet: jain. Allergies: none. Conditions: none.\n\nFoods recommended to eat:\n- At lunch and dinner, start with 1 katori (about 150 ml) of moong or masoor dal soup or dal, and replace refined-flour rotis with 1–2 bajra/jowar/ragi rotis.\n- Use whole millets for 2 meals daily: 1 cup cooked foxtail millet khichdi/upma or 1–2 millet rotis per meal; keep total cooked grain to about 1 cup per meal.\n- Fill half the plate at lunch and dinner with 1–2 katoris of seasonal non-root vegetables such as lauki, tinda, parwal, bhindi, beans, spinach or methi, cooked with 1 tsp oil.\n- Include one Jain-friendly protein at each meal: 1 katori dal, 1 katori curd, 30–40 g paneer, or 1 katori sprouted moong/moth beans.\n- For snacks, eat 1 small handful (about 20 g) of unsalted almonds/walnuts/pumpkin seeds or 1 tbsp flaxseed powder; choose unsweetened, honey-free versions.\n- If you take dairy, have 1 cup fortified milk or 1 katori fortified curd daily with a meal; check the label for vitamin D fortification."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"diet_respected\", \"reasoning\": \"All recommended foods are vegetarian and egg-free. The vegetables listed (lauki, tinda, parwal, bhindi, beans, spinach, methi) are explicitly non-root, no onion or garlic appears in any recommendation, snacks are specified as honey-free, and dairy (curd, paneer, milk) is acceptable for a Jain diet.\", \"passed\": true}, {\"criterion\": \"allergies_respected\", \"reasoning\": \"The member has no allergies, so there are no allergens to avoid in the recommended foods.\", \"passed\": true}, {\"criterion\": \"conditions_respected\", \"reasoning\": \"The member has no medical conditions listed, so there are no condition-related restrictions to check against the recommended foods.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 735,
+    "tokens_out": 812,
+    "latency_ms": 17755.9,
+    "cost_usd": 0.0046018
+  }
+}

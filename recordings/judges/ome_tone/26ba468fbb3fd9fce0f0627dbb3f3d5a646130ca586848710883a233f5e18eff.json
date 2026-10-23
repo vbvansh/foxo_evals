@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:34:51+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nWhat time does the phlebotomist come for home collection? Do you come on Sundays?\n\nOme's reply:\nHome sample collection slots run from 6:00 AM to 11:00 AM, Monday to Saturday, and the phlebotomist arrives within the 30-minute window you book. Sundays aren't included in those slots, so I'll check with the team about any Sunday option for you."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The member's question is logistical, and the reply addresses it attentively, going a step further by offering to check with the team about a Sunday option, which shows genuine care for the member's scheduling needs.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The reply gives specific timings, explains the 30-minute arrival window, and states plainly that Sundays are not covered, with a clear next step (Ome will check on Sunday availability).\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, respectful and professional. It avoids jargon (the member themselves used 'phlebotomist'), contains no blame, and does not over-apologize.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in direct, simple English, and the reply matches that language and style.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 443,
+    "tokens_out": 982,
+    "latency_ms": 17618.1,
+    "cost_usd": 0.004941
+  }
+}

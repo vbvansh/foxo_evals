@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:22:31+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: creatinine 1.4 mg/dL (high), hba1c 7.4 % (high), glucose_fasting 138.0 mg/dL (high)\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\n66-year-old woman with type 2 diabetes on metformin 1000 mg, vegetarian, no allergies. Most important finding is a raised creatinine of 1.4 mg/dL (reference 0.6-1.1 mg/dL, flag high), which in the context of ongoing metformin therapy needs clinical correlation of renal function before the current dose is continued — nephrology review is requested. Glycaemic control is above target: HbA1c 7.4 % (reference 4.0-5.6 %, flag high) and fasting glucose 138 mg/dL (reference 70-99 mg/dL, flag high), consistent with suboptimal control and warranting endocrinology review. Potassium is 4.6 mmol/L (reference 3.5-5.1 mmol/L) and is within range. No sample quality issues or unparsed items were reported. No critical values. Please review metformin dosing against renal function and consider repeat creatinine with eGFR.\n\nRecommended follow-ups:\n- Repeat creatinine with eGFR and consider urine albumin assessment to clarify renal function before continuing the current metformin dose.\n- Review metformin dose and overall diabetes management in light of HbA1c 7.4 % and fasting glucose 138 mg/dL.\n- Repeat fasting glucose and HbA1c after any therapy adjustment to track control."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"After a single line of patient context, the summary immediately presents the elevated creatinine as the 'most important finding,' correctly prioritizing it over the glycemic abnormalities given the metformin context. No critical values existed in the data, and the summary explicitly notes this.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is roughly 150 words plus three short follow-up bullets, easily readable in under a minute. There is minor duplication between the closing sentence and the first follow-up, and the normal potassium adds little, but neither is enough to make it padded or hard to scan.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Next steps are concrete and specific: repeat creatinine with eGFR, urine albumin assessment, metformin dose review, nephrology and endocrinology referrals, and repeat glycemic testing after any adjustment. The clinician knows exactly what to do.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contained no sample quality issues or unreadable items, and the summary affirmatively states 'No sample quality issues or unparsed items were reported,' so nothing is missed.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 739,
+    "tokens_out": 1190,
+    "latency_ms": 30123.3,
+    "cost_usd": 0.0062706
+  }
+}

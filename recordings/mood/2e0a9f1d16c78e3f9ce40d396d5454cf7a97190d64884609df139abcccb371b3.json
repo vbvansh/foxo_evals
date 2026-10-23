@@ -1,0 +1,23 @@
+{
+  "agent": "mood",
+  "prompt_version": "v1",
+  "model": "deepseek-v4.1-flash",
+  "recorded_at": "2026-10-23T06:16:16+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You read laboratory reports for FOXO's lab team. Extract every test result printed in the report.\n\nFor each result, copy exactly what is printed:\n- name_as_printed: the test name as printed. Keep typos and OCR errors as they are.\n- value_as_printed: the result value only, as printed, including signs such as \"<\" or \">\". If the value is unreadable or missing (for example \"##.#\" or smudged), still include the test and copy the value exactly as printed. Never correct, estimate or fill in a value.\n- unit_as_printed: the unit as printed, or \"\" if no unit is printed.\n\nDo not convert units, do not interpret results, and do not add tests that are not in the report. If the same test is printed twice, include both. Ignore reference ranges, H/L flags, patient details and comments.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"RawBiomarker\": {\"description\": \"What the LLM reads off the report, copied as printed. No conversion, no cleanup.\", \"properties\": {\"name_as_printed\": {\"title\": \"Name As Printed\", \"type\": \"string\"}, \"value_as_printed\": {\"title\": \"Value As Printed\", \"type\": \"string\"}, \"unit_as_printed\": {\"title\": \"Unit As Printed\", \"type\": \"string\"}}, \"required\": [\"name_as_printed\", \"value_as_printed\", \"unit_as_printed\"], \"title\": \"RawBiomarker\", \"type\": \"object\"}}, \"properties\": {\"biomarkers\": {\"items\": {\"$ref\": \"#/$defs/RawBiomarker\"}, \"title\": \"Biomarkers\", \"type\": \"array\"}}, \"required\": [\"biomarkers\"], \"title\": \"MoodExtraction\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "EMERGENCY PANEL\nPatient: Pooja Verma   30/F\nFasting Blood Sugar    2.6     mmol/L    3.9 - 5.5     (L) CRITICAL\nHb                     6.4     g/dL      12.0 - 15.5   (L) CRITICAL\nVitamin B12            150     pg/mL     200 - 900     (L)"
+    }
+  ],
+  "response": "{\"biomarkers\":[{\"name_as_printed\":\"Fasting Blood Sugar\",\"value_as_printed\":\"2.6\",\"unit_as_printed\":\"mmol/L\"},{\"name_as_printed\":\"Hb\",\"value_as_printed\":\"6.4\",\"unit_as_printed\":\"g/dL\"},{\"name_as_printed\":\"Vitamin B12\",\"value_as_printed\":\"150\",\"unit_as_printed\":\"pg/mL\"}]}",
+  "usage": {
+    "tokens_in": 535,
+    "tokens_out": 153,
+    "latency_ms": 2769.7,
+    "cost_usd": 0.0003441
+  }
+}

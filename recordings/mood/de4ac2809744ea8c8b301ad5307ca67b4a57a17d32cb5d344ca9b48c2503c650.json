@@ -1,0 +1,23 @@
+{
+  "agent": "mood",
+  "prompt_version": "v1",
+  "model": "deepseek-v4.1-flash",
+  "recorded_at": "2026-10-23T06:16:07+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You read laboratory reports for FOXO's lab team. Extract every test result printed in the report.\n\nFor each result, copy exactly what is printed:\n- name_as_printed: the test name as printed. Keep typos and OCR errors as they are.\n- value_as_printed: the result value only, as printed, including signs such as \"<\" or \">\". If the value is unreadable or missing (for example \"##.#\" or smudged), still include the test and copy the value exactly as printed. Never correct, estimate or fill in a value.\n- unit_as_printed: the unit as printed, or \"\" if no unit is printed.\n\nDo not convert units, do not interpret results, and do not add tests that are not in the report. If the same test is printed twice, include both. Ignore reference ranges, H/L flags, patient details and comments.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"RawBiomarker\": {\"description\": \"What the LLM reads off the report, copied as printed. No conversion, no cleanup.\", \"properties\": {\"name_as_printed\": {\"title\": \"Name As Printed\", \"type\": \"string\"}, \"value_as_printed\": {\"title\": \"Value As Printed\", \"type\": \"string\"}, \"unit_as_printed\": {\"title\": \"Unit As Printed\", \"type\": \"string\"}}, \"required\": [\"name_as_printed\", \"value_as_printed\", \"unit_as_printed\"], \"title\": \"RawBiomarker\", \"type\": \"object\"}}, \"properties\": {\"biomarkers\": {\"items\": {\"$ref\": \"#/$defs/RawBiomarker\"}, \"title\": \"Biomarkers\", \"type\": \"array\"}}, \"required\": [\"biomarkers\"], \"title\": \"MoodExtraction\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "INFLAMMATION & LIVER\nPatient: Imran Sheikh   40/M\nCRP (Quantitative)   <5      mg/L     0 - 5\nALT (SGPT)           32      U/L      < 50\nVitamin D            24      ng/mL    30 - 100"
+    }
+  ],
+  "response": "{\"biomarkers\":[{\"name_as_printed\":\"CRP (Quantitative)\",\"value_as_printed\":\"<5\",\"unit_as_printed\":\"mg/L\"},{\"name_as_printed\":\"ALT (SGPT)\",\"value_as_printed\":\"32\",\"unit_as_printed\":\"U/L\"},{\"name_as_printed\":\"Vitamin D\",\"value_as_printed\":\"24\",\"unit_as_printed\":\"ng/mL\"}]}",
+  "usage": {
+    "tokens_in": 511,
+    "tokens_out": 162,
+    "latency_ms": 3302.1,
+    "cost_usd": 0.0003477
+  }
+}

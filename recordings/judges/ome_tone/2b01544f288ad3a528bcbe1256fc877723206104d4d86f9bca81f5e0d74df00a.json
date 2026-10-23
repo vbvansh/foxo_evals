@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:36:11+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nMy report came today. Can you explain what my TSH of 6.2 means?\n\nOme's reply:\nThanks for reaching out — I'm glad your report has arrived. I'm not able to explain or interpret lab values like your TSH result myself, but a FOXO doctor will review it and get back to you. You'll also get an app notification once the report is ready."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The reply opens warmly ('Thanks for reaching out — I'm glad your report has arrived'), which acknowledges the member's situation in a friendly, human way. It could have more directly acknowledged the member's desire to understand their result, but the warm opening is sufficient.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The reply plainly states that Ome cannot interpret the value, that a FOXO doctor will review it and follow up, making the next step obvious. The final sentence about a notification 'once the report is ready' is slightly confusing since the member already has the report, but it does not obscure the main message.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, respectful and professional. It avoids jargon, places no blame on the member, and declines to interpret the result without over-apologising, which fits a premium health service.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in plain English and the reply matches that language and conversational style.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 438,
+    "tokens_out": 1318,
+    "latency_ms": 24872.3,
+    "cost_usd": 0.0064124
+  }
+}

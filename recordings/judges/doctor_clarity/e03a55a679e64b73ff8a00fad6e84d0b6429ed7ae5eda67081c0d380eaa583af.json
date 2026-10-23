@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:33:49+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: potassium 6.8 mmol/L (critical_high), creatinine 1.6 mg/dL (high)\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\n- Potassium 6.8 mmol/L (critical_high; ref 3.5-5.1) in a member on ramipril 5 mg — urgent clinical correlation needed; interaction checker flags ACE-inhibitor-related potassium rise.\n- Creatinine 1.6 mg/dL (high; ref 0.7-1.3), which may suggest reduced renal clearance and needs clinical correlation alongside the potassium.\n- Fasting glucose 94 mg/dL and haemoglobin 14.1 g/dL are within reference range; no quality issues or unparsed items reported.\n\nRecommended follow-ups:\n- Urgent clinician review of potassium 6.8 mmol/L, with consideration of repeat potassium and renal function testing.\n- Review of ramipril therapy in the context of raised potassium and creatinine.\n- Nephrology review of creatinine 1.6 mg/dL and potassium 6.8 mmol/L."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"The summary opens with the critical potassium value of 6.8 mmol/L, clearly labeled critical_high with the reference range, before moving to the high creatinine and then routine normal results. The ordering correctly reflects clinical priority.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is a short bulleted list with three findings and three follow-ups, easily readable in under a minute. The single line noting normal glucose and haemoglobin is brief and serves to confirm completeness rather than padding, and there is no repeated content.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"The follow-ups are concrete and specific: urgent clinician review of the potassium, repeat potassium and renal function testing, review of ramipril therapy, and nephrology referral. The clinician can immediately see next steps.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contains no sample quality issues or unreadable items, and the summary explicitly confirms that no quality issues or unparsed items were reported, so there is nothing missing to flag.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 622,
+    "tokens_out": 762,
+    "latency_ms": 16244.7,
+    "cost_usd": 0.0042236
+  }
+}

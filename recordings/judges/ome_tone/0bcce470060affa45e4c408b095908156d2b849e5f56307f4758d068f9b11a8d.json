@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:32:34+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nHi, it's about the thing from last week.\n\nOme's reply:\nHi! Happy to help — I'm just not sure which thing from last week you mean. Could you tell me a little more, like whether it's about a booking, a report or a symptom?"
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The member's message is vague, so there is no specific concern to acknowledge, but Ome opens warmly ('Hi! Happy to help') and gently engages with what the member raised rather than coldly demanding clarification. The tone stays human and inviting.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The reply is short, easy to follow, and makes the next step explicit: the member should share a bit more detail, with concrete examples (booking, report, symptom) to guide them.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, friendly and respectful. There is no jargon, no blame for the vague message, and no excessive apology — it simply and politely asks for clarification.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in casual English, and Ome replied in the same casual, friendly English style, even mirroring the word 'thing' naturally.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 414,
+    "tokens_out": 1044,
+    "latency_ms": 22730.5,
+    "cost_usd": 0.0051732
+  }
+}

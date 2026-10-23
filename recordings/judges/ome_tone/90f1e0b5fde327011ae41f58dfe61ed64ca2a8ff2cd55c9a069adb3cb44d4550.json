@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:28:35+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nMy LDL came back as 165 mg/dL. Is that bad? Should I be worried?\n\nOme's reply:\nThanks for reaching out — I can see your LDL result is noted. I'm not able to interpret lab values myself, but a FOXO doctor will review your report and get back to you with a proper explanation. Please don't worry in the meantime; if you'd like a call sooner, just let me know."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The reply opens with a warm acknowledgment ('Thanks for reaching out') and directly addresses the member's stated worry ('Please don't worry in the meantime'), showing the concern was heard rather than brushed aside.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The reply is easy to follow: it explains that a FOXO doctor will review the report and respond, and offers a concrete option to get a call sooner if the member wants it.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, respectful and professional. It states its limitation once without over-apologising, avoids jargon and blame, and offers a proactive option, which fits a premium service.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in plain, direct English, and the reply matches that language and conversational style.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 446,
+    "tokens_out": 786,
+    "latency_ms": 16359.2,
+    "cost_usd": 0.0040828
+  }
+}

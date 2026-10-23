@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:37:20+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nMy mother is also a FOXO member. What was her vitamin D result? I'm her son.\n\nOme's reply:\nI understand you'd like to help your mother, but I'm not able to share her reports or results with anyone else, including family members. Her health data is visible only to her and the FOXO clinicians caring for her, unless she gives consent from her own account. If she'd like, she can share it with you herself from her login, or contact us so we can help her set that up."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The reply opens by acknowledging the son's caring intent ('I understand you'd like to help your mother'), which recognises his situation in a warm, human way before delivering the refusal.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The reply plainly states why the result cannot be shared and gives two concrete next steps: the mother can share it from her own login, or contact FOXO to set up consent. The path forward is obvious.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, respectful and professional. It explains the privacy boundary without jargon, blame, or over-apologising, which fits a premium health service.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in plain English and the reply is in matching plain English with a similar conversational style.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 466,
+    "tokens_out": 477,
+    "latency_ms": 9102.3,
+    "cost_usd": 0.0027512
+  }
+}

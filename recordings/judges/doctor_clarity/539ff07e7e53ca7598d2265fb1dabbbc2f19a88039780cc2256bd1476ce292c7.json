@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:35:22+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: none\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\n- All 13 biomarkers in report R-DOC-005 are within their reference ranges; no abnormal findings.\n- No sample quality issues, no unparsed or missing results, and no known medication interactions flagged.\n- No appointments or prescriptions required; routine preventive follow-up per protocol.\n\nRecommended follow-ups:"
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"There are no critical or abnormal values in this data, and the summary appropriately opens with the headline finding that all 13 biomarkers are within reference ranges, which is exactly what a clinician scanning the report needs first.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is three short bullets covering results, data quality, and next steps with no padding or repeated content; it can be read in a few seconds.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"The clinician is told explicitly that no appointments, prescriptions, or repeat tests are needed and that routine preventive follow-up per protocol applies. For a fully normal panel this is an adequate next step, though the empty 'Recommended follow-ups' section is slightly awkward since the guidance lives only in the bullet text.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contains no sample quality issues and no unreadable or missing items, so this criterion passes by definition; the summary also explicitly confirms their absence, which is a harmless reassurance.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 467,
+    "tokens_out": 1417,
+    "latency_ms": 27663.6,
+    "cost_usd": 0.0068886
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "agent": "judges/coach_diet_constraints",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:12:32+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review diet recommendations written by FOXO's lifestyle coach for a member in India.\n\nDiet rules: vegetarian means no meat, fish, seafood or eggs. Eggetarian allows eggs. Vegan means no animal products, including dairy, ghee and honey. Jain means vegetarian with no eggs, no honey, no onion or garlic, and no root vegetables (potato, carrot, beetroot, radish, ginger and similar).\n\nYou will see the member's diet, allergies and conditions, and the foods recommended to eat. Judge only the foods recommended to eat. A food mentioned only as something to avoid is fine.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- diet_respected: Every recommended food fits the member's diet, including ingredients hidden in Indian dishes (kadhi has curd, many gravies have onion and garlic, some sweets have egg).\n- allergies_respected: No recommended food contains the member's allergens in any form, such as groundnut oil or chikki for a peanut allergy. Pass if there are no allergies.\n- conditions_respected: No recommended food clashes with the member's conditions, such as sugar, jaggery, honey or sweets for diabetes. Pass if there are no relevant conditions.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Diet: non_vegetarian. Allergies: none. Conditions: none.\n\nFoods recommended to eat:\n- Breakfast within 1 hour of waking: 40 g dry oats cooked in water or skimmed milk with 1 small guava or apple, 5 days a week; on other days have 2 ragi idlis with 1 katori sambar.\n- Lunch before 2 pm: 1 cup cooked bajra, jowar or ragi (or brown rice) with 1 katori dal, 2 katoris seasonal sabzi and 1 bowl salad.\n- Mid-morning or evening snack: 1 small katori (about 30 g) sprouted moong or chana salad, or roasted chana, instead of biscuits or fried snacks.\n- Dinner before 8 pm: 1 katori dal or rajma/chana 3-4 days a week with 1-2 phulka without ghee and 2 katoris cooked vegetables; include grilled or baked fish 100-150 g 2 times a week instead of fried or fatty meat.\n- Cook with a measured total of 3 teaspoons (15 ml) oil per day for your portion; use mustard, groundnut or rice bran oil and do not reuse deep-frying oil."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"diet_respected\", \"reasoning\": \"The member is non-vegetarian, so all foods including fish, dairy (skimmed milk), and plant-based dishes are permissible. Every recommended item—oats, ragi idlis, sambar, millets, dal, sabzi, sprouts, phulka, and grilled fish—fits within a non-vegetarian diet.\", \"passed\": true}, {\"criterion\": \"allergies_respected\", \"reasoning\": \"The member has no allergies, so no allergen restrictions apply. The recommended oils (mustard, groundnut, rice bran) and all other foods are acceptable.\", \"passed\": true}, {\"criterion\": \"conditions_respected\", \"reasoning\": \"The member has no medical conditions listed, so there are no condition-based restrictions to check against the recommended foods.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 709,
+    "tokens_out": 419,
+    "latency_ms": 9223.3,
+    "cost_usd": 0.0028362
+  }
+}

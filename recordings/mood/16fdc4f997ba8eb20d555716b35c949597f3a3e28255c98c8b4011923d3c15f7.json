@@ -1,0 +1,23 @@
+{
+  "agent": "mood",
+  "prompt_version": "v1",
+  "model": "deepseek-v4.1-flash",
+  "recorded_at": "2026-10-23T06:15:46+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You read laboratory reports for FOXO's lab team. Extract every test result printed in the report.\n\nFor each result, copy exactly what is printed:\n- name_as_printed: the test name as printed. Keep typos and OCR errors as they are.\n- value_as_printed: the result value only, as printed, including signs such as \"<\" or \">\". If the value is unreadable or missing (for example \"##.#\" or smudged), still include the test and copy the value exactly as printed. Never correct, estimate or fill in a value.\n- unit_as_printed: the unit as printed, or \"\" if no unit is printed.\n\nDo not convert units, do not interpret results, and do not add tests that are not in the report. If the same test is printed twice, include both. Ignore reference ranges, H/L flags, patient details and comments.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"RawBiomarker\": {\"description\": \"What the LLM reads off the report, copied as printed. No conversion, no cleanup.\", \"properties\": {\"name_as_printed\": {\"title\": \"Name As Printed\", \"type\": \"string\"}, \"value_as_printed\": {\"title\": \"Value As Printed\", \"type\": \"string\"}, \"unit_as_printed\": {\"title\": \"Unit As Printed\", \"type\": \"string\"}}, \"required\": [\"name_as_printed\", \"value_as_printed\", \"unit_as_printed\"], \"title\": \"RawBiomarker\", \"type\": \"object\"}}, \"properties\": {\"biomarkers\": {\"items\": {\"$ref\": \"#/$defs/RawBiomarker\"}, \"title\": \"Biomarkers\", \"type\": \"array\"}}, \"required\": [\"biomarkers\"], \"title\": \"MoodExtraction\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "APEX HEALTH LAB\nPatient: Rohan Das   29 Y / Male\nHemoglobin        12.6   g/dL    (13.0 - 17.0)\nCreatinine        1.2    mg/dL   (0.7 - 1.3)\nALT (SGPT)        48     U/L     (< 50)"
+    }
+  ],
+  "response": "{\"biomarkers\":[{\"name_as_printed\":\"Hemoglobin\",\"value_as_printed\":\"12.6\",\"unit_as_printed\":\"g/dL\"},{\"name_as_printed\":\"Creatinine\",\"value_as_printed\":\"1.2\",\"unit_as_printed\":\"mg/dL\"},{\"name_as_printed\":\"ALT (SGPT)\",\"value_as_printed\":\"48\",\"unit_as_printed\":\"U/L\"}]}",
+  "usage": {
+    "tokens_in": 519,
+    "tokens_out": 197,
+    "latency_ms": 3000.0,
+    "cost_usd": 0.0003921
+  }
+}

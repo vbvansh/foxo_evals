@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:36:59+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: vitamin_d 14.0 ng/mL (low)\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\n- Vitamin D (25-OH) is low at 14 ng/mL (reference 30–100 ng/mL), consistent with vitamin D deficiency; needs clinical correlation and a supplementation plan.\n- Member has requested vitamin D tablets; a draft has been prepared for your review and approval — nothing has been issued.\n- CRP, ALT and haemoglobin are within reference limits; no sample quality issues or unparsed items reported.\n\nRecommended follow-ups:\n- Repeat vitamin D (25-OH) testing after the supplementation course to assess response, timing at clinician's discretion.\n- Clinician to review and approve the drafted vitamin D prescription before the member is informed."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"The only abnormal finding — vitamin D deficiency at 14 ng/mL — is stated first, before the normal results and administrative details. There are no critical values in this case, and the ordering correctly prioritizes the abnormal result.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is three short bullets plus two follow-up items, easily readable in well under a minute. There is no padding and no repeated content; each bullet adds distinct information (abnormal result, pending prescription workflow, normal results/limitations).\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Next steps are explicit: the clinician must review and approve the drafted vitamin D prescription, and repeat 25-OH vitamin D testing is recommended after supplementation. The clinician can act immediately on this.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contains no sample quality issues or unreadable items, so this criterion passes by definition. The summary even affirmatively notes that no sample quality issues or unparsed items were reported, which is helpful confirmation.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 547,
+    "tokens_out": 628,
+    "latency_ms": 26841.4,
+    "cost_usd": 0.003529
+  }
+}

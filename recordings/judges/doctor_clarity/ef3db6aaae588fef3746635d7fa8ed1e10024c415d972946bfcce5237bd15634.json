@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:23:51+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: vitamin_d 14.0 ng/mL (low)\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\n38-year-old male with no known comorbidities or medications, requesting treatment for low vitamin D. The only abnormal result is vitamin D (25-OH) at 14.0 ng/mL (reference 30.0–100.0 ng/mL), flagged low — consistent with vitamin D deficiency and needs clinical correlation; the member has specifically asked for vitamin D tablets, so a cholecalciferol draft has been prepared for your approval. Remaining results are within range: CRP 5.0 mg/L (reported as <5, upper limit of 5.0, flag normal), ALT 30.0 U/L and haemoglobin 15.0 g/dL. No sample quality issues and no unparsed items; no known drug interactions. A routine general physician appointment has been requested to review the vitamin D result and confirm the supplementation plan.\n\nRecommended follow-ups:\n- Repeat vitamin D (25-OH) after the supplementation course to confirm response.\n- Routine general physician review of the low vitamin D result and supplementation plan."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"There are no critical values in this dataset, and the only abnormal finding (vitamin D 14.0 ng/mL, consistent with deficiency) is presented in the opening sentences, ahead of the normal results (CRP, ALT, haemoglobin). The ordering is appropriate.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is a single short paragraph plus two brief follow-up bullets, easily read in under a minute with no padding. The only minor redundancy is the GP appointment being restated in the follow-ups, but this does not materially lengthen or clutter the summary.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Next steps are explicit and concrete: a cholecalciferol draft is prepared and awaits clinician approval, a routine GP review has been requested, and a repeat vitamin D (25-OH) after the supplementation course is recommended to confirm response.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contains no sample quality issues and no unreadable or missing items, and the summary explicitly confirms this ('No sample quality issues and no unparsed items'), so the criterion is satisfied.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 626,
+    "tokens_out": 1492,
+    "latency_ms": 13405.8,
+    "cost_usd": 0.0074412
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:26:54+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: tsh 7.8 mIU/L (high), vitamin_d 18.0 ng/mL (low)\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\n- TSH 7.8 mIU/L (high; ref 0.4–4.0) in a member already on levothyroxine 50 mcg — may suggest under-replacement or non-adherence; needs clinical correlation and dose review.\n- Vitamin D 25-OH 18.0 ng/mL (low; ref 30–100) — consistent with vitamin D insufficiency; replacement to be considered by the clinician.\n- Haemoglobin 12.4 g/dL is within range; no sample quality issues and no unparsed items on this report.\n\nRecommended follow-ups:\n- Repeat TSH after confirming levothyroxine adherence and timing; clinician to review dose.\n- Repeat vitamin D (25-OH) after any replacement course to confirm response.\n- Discuss vitamin D supplementation with the clinician at the general physician review."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"The summary opens with the TSH of 7.8 mIU/L in a member on levothyroxine, which is the most actionable finding since it may prompt a dose change; the vitamin D result follows. No critical values were present in the data, and the ordering appropriately reflects clinical priority.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is three short bullets plus three brief follow-up lines, easily read in well under a minute. The only minor padding is the hemoglobin note, which was not part of the provided abnormal results, but it does not meaningfully lengthen or clutter the summary.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Clear next steps are given: confirm levothyroxine adherence and timing, repeat TSH with clinician dose review, consider vitamin D replacement, and repeat 25-OH vitamin D to confirm response. The clinician can immediately see what to do.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contained no sample quality issues and no unreadable items, and the summary explicitly confirms this ('no sample quality issues and no unparsed items'), so the criterion is satisfied.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 606,
+    "tokens_out": 728,
+    "latency_ms": 7806.7,
+    "cost_usd": 0.0040516
+  }
+}

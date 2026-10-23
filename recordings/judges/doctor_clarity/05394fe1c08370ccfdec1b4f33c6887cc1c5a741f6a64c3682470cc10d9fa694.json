@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:21:49+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: glucose_fasting 142.0 mg/dL (high), hdl 48.0 mg/dL (low)\n- Sample quality issues: none\n- Unreadable items: LDL Cholesterol: ##.# mg/dL (unreadable value)\n\nSummary for clinician:\nFasting glucose is high at 142 mg/dL (ref 70–99) in a 58-year-old member with known type 2 diabetes on metformin 500 mg — glycaemic control appears suboptimal and needs clinical correlation. HDL cholesterol is low at 48 mg/dL (ref low 50); triglycerides are within range at 145 mg/dL (ref high 150). LDL cholesterol could not be read (printed as '##.# mg/dL', unreadable value) so it is not available — a repeat lipid panel is advised rather than assuming any value. No critical alerts and no known drug interactions from the checker. Suggested routing: endocrinology for the fasting glucose and cardiology for the low HDL plus the incomplete lipid profile. No sample quality issues were reported.\n\nRecommended follow-ups:\n- Repeat lipid panel to obtain a readable LDL cholesterol value (previous result unreadable).\n- Consider HbA1c and review of diabetes management with the clinician.\n- Endocrinology review of fasting glucose.\n- Cardiology review of low HDL and incomplete lipid profile."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"The summary opens with the fasting glucose of 142 mg/dL in a member with type 2 diabetes, which is the most consequential finding, before covering the low HDL and the unreadable LDL. No critical values were present, so no reordering was needed.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary paragraph plus follow-up list totals roughly 160 words and is easily readable in under a minute with no padding. The only minor redundancy is that the endocrinology/cardiology routing in the paragraph is restated in the follow-ups, but this does not meaningfully slow the reader.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Next steps are explicit and specific: repeat the lipid panel to obtain a readable LDL, consider HbA1c and a diabetes management review, and route to endocrinology for the glucose and cardiology for the lipid findings.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The unreadable LDL result is clearly flagged, including the raw '##.# mg/dL' output, with a repeat test recommended rather than assuming a value, and the summary also notes that no sample quality issues were reported.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 669,
+    "tokens_out": 1737,
+    "latency_ms": 17506.7,
+    "cost_usd": 0.0085794
+  }
+}

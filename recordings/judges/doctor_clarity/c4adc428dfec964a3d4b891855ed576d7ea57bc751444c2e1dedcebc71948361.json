@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:20:49+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: ldl 168.0 mg/dL (high), total_cholesterol 245.0 mg/dL (high)\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\n49-year-old woman with no known conditions or medications, requesting cholesterol-lowering therapy; her father had a myocardial infarction at 55. Lipid panel shows LDL cholesterol 168 mg/dL (high, ref high 100 mg/dL) and total cholesterol 245 mg/dL (high, ref high 200 mg/dL). HDL cholesterol 52 mg/dL and triglycerides 140 mg/dL are within range, and fasting glucose is 90 mg/dL (normal). No critical values, no sample quality issues, no unparsed items and no known drug interactions. The dyslipidaemia in the context of a family history of premature coronary disease may suggest increased atherosclerotic risk and needs clinical correlation; cardiology review for risk stratification and a decision on pharmacotherapy is recommended. A statin draft has been prepared at the member's request and requires your review and approval before anything is offered to her.\n\nRecommended follow-ups:\n- Cardiology review for cardiovascular risk stratification and to decide on lipid-lowering therapy.\n- Repeat lipid panel after any treatment decision to assess response.\n- Discuss family history of premature coronary artery disease (father, myocardial infarction at 55) at the cardiology visit."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"There are no critical values in this case. The key abnormal findings (LDL 168 mg/dL, total cholesterol 245 mg/dL) are stated immediately after a single line of relevant clinical context and clearly before the normal results, so the priority finding effectively leads the summary.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The summary is a single paragraph of roughly 150 words that a clinician can read well under a minute. The only repetition is the family history and cardiology recommendation reappearing in the follow-ups, which is a minor and acceptable duplication given the follow-up list format.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Next steps are explicit and concrete: cardiology referral for risk stratification and therapy decision, a repeat lipid panel after treatment to assess response, and a statin draft awaiting the clinician's review and approval before anything is offered to the patient.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contains no sample quality issues and no unreadable or missing items, so this criterion passes by definition; the summary also affirmatively confirms the absence of such issues.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 685,
+    "tokens_out": 1302,
+    "latency_ms": 30957.3,
+    "cost_usd": 0.0066878
+  }
+}

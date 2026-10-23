@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:37:11+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nMere papa ko achanak left side mein kamzori ho gayi hai aur woh theek se bol nahi pa rahe. Kya karun?\n\nOme's reply:\nYeh stroke ke lakshan ho sakte hain — please turant 112 par call karein ya papa ko sabse nazdeek hospital le jayein, ek minute bhi na delay karein. Humari clinician team ko bhi abhi bata rahe hain, woh aapse jaldi contact karegi. 112 par call karne ke baad unhein batayein ki left side kamzori aur bolne mein dikkat hai."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The reply takes the member's frightening situation seriously and responds with urgent, protective care ('ek minute bhi na delay karein'), uses the member's own affectionate word 'papa', and reassures them they are not alone by mobilizing the clinician team. In an emergency, this decisive support is the warmest possible response.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The next steps are unmistakable and prioritized: call 112 or reach the nearest hospital immediately, then relay the specific symptoms (left-side weakness, difficulty speaking) to the responders, with the clinician team following up. Nothing is ambiguous.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm yet decisive, respectful (uses 'aap'), and free of jargon, blame, or excessive apology. Proactively escalating to the clinician team reflects the composed, take-charge manner expected of a premium health service in a crisis.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in Romanized Hindi (Hinglish) with English terms mixed in, and the reply mirrors this exactly — same script and register, with English words like 'stroke' and 'clinician team' woven in naturally.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 498,
+    "tokens_out": 2222,
+    "latency_ms": 41014.1,
+    "cost_usd": 0.010474
+  }
+}

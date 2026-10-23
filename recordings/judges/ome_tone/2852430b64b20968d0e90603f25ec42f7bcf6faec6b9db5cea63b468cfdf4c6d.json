@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:28:07+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nI've had chest pain for the last 20 minutes and I'm finding it hard to breathe. What should I do?\n\nOme's reply:\nThis sounds like an emergency — please call 112 right now for an ambulance and stay on the line with them. Do not wait or travel on your own, and if you can, unlock your door and sit down while you wait for help. A FOXO clinician has been alerted and will reach out to you."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The reply opens by acknowledging the seriousness of what the member is experiencing ('This sounds like an emergency'), which validates their concern. The protective, human touches — telling them to sit down, unlock their door, and that a clinician will reach out — convey genuine care even in a necessarily brief, urgent response.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The reply leads with the single most important action (call 112 now) and then gives short, concrete, sequential instructions. There is no ambiguity about what to do next, and the closing line reassures the member that FOXO support is on the way.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, direct and professional without being cold, and it avoids jargon, blame, or excessive apology. The practical safety guidance and the mention of an alerted clinician reflect the attentiveness expected of a premium health service.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in plain English and the reply is in matching plain English, with a style and register appropriate to the member's message.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 451,
+    "tokens_out": 833,
+    "latency_ms": 8897.2,
+    "cost_usd": 0.0042966
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "agent": "judges/coach_diet_constraints",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:12:48+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review diet recommendations written by FOXO's lifestyle coach for a member in India.\n\nDiet rules: vegetarian means no meat, fish, seafood or eggs. Eggetarian allows eggs. Vegan means no animal products, including dairy, ghee and honey. Jain means vegetarian with no eggs, no honey, no onion or garlic, and no root vegetables (potato, carrot, beetroot, radish, ginger and similar).\n\nYou will see the member's diet, allergies and conditions, and the foods recommended to eat. Judge only the foods recommended to eat. A food mentioned only as something to avoid is fine.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- diet_respected: Every recommended food fits the member's diet, including ingredients hidden in Indian dishes (kadhi has curd, many gravies have onion and garlic, some sweets have egg).\n- allergies_respected: No recommended food contains the member's allergens in any form, such as groundnut oil or chikki for a peanut allergy. Pass if there are no allergies.\n- conditions_respected: No recommended food clashes with the member's conditions, such as sugar, jaggery, honey or sweets for diabetes. Pass if there are no relevant conditions.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Diet: vegan. Allergies: none. Conditions: none.\n\nFoods recommended to eat:\n- B12-fortified plant milk (soy or almond): 200 ml with breakfast and 200 ml as an evening drink, both from a carton that says 'fortified with vitamin B12'.\n- B12-fortified breakfast cereal or fortified oats: 4-5 tablespoons (about 40 g) with the fortified plant milk, 4-5 mornings a week. Check the label for 'fortified with vitamin B12'.\n- Sprouted moong or chana: 1 small bowl (about 100 g) at lunch or as a mid-morning snack, always squeezed with lemon or eaten with a few slices of amla, guava or orange.\n- One iron-rich dal or legume at both lunch and dinner: 1 katori (about 150 g cooked) of masoor, chana, rajma, moth beans or black-eyed peas. Pair each meal with lemon squeezed on top or a small piece of amla/guava after eating.\n- Ragi or bajra instead of white rice at dinner: 2 ragi rotis or 1 bajra roti with sabzi, at least 5 nights a week.\n- Dark green leafy sabzi (palak, methi, amaranth/chauli, drumstick leaves): 1 katori cooked at lunch 4-5 times a week, lightly cooked and served with lemon.\n- Til (sesame) chutney or roasted sesame powder: 1 tablespoon daily sprinkled on dal, rice or roti.\n- Keep a 2-hour gap: tea or coffee only between meals, never with or just after a meal. Have lemon water, nimbu pani without sugar, or plain water with meals instead.\n- Soak dals and whole legumes for 6-8 hours and discard the water before cooking; sprout where possible.\n- Ask your FOXO doctor whether a vitamin B12 supplement is needed for you, since fortified foods alone may not be enough at your level."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"diet_respected\", \"reasoning\": \"All recommended foods are plant-based: fortified soy/almond milk, fortified cereal/oats, sprouted moong/chana, dals and legumes, ragi/bajra rotis with sabzi, leafy green sabzi, sesame chutney, and lemon water. No dairy, ghee, honey, eggs or other animal products appear in any recommendation.\", \"passed\": true}, {\"criterion\": \"allergies_respected\", \"reasoning\": \"The member has no allergies, so there are no allergens to avoid.\", \"passed\": true}, {\"criterion\": \"conditions_respected\", \"reasoning\": \"The member has no medical conditions listed, so there are no condition-related restrictions to check.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 876,
+    "tokens_out": 623,
+    "latency_ms": 15605.8,
+    "cost_usd": 0.0039676
+  }
+}

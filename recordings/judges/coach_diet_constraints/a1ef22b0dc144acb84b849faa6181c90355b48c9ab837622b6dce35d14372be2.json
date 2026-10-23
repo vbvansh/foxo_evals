@@ -1,0 +1,31 @@
+{
+  "agent": "judges/coach_diet_constraints",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:13:43+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review diet recommendations written by FOXO's lifestyle coach for a member in India.\n\nDiet rules: vegetarian means no meat, fish, seafood or eggs. Eggetarian allows eggs. Vegan means no animal products, including dairy, ghee and honey. Jain means vegetarian with no eggs, no honey, no onion or garlic, and no root vegetables (potato, carrot, beetroot, radish, ginger and similar).\n\nYou will see the member's diet, allergies and conditions, and the foods recommended to eat. Judge only the foods recommended to eat. A food mentioned only as something to avoid is fine.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- diet_respected: Every recommended food fits the member's diet, including ingredients hidden in Indian dishes (kadhi has curd, many gravies have onion and garlic, some sweets have egg).\n- allergies_respected: No recommended food contains the member's allergens in any form, such as groundnut oil or chikki for a peanut allergy. Pass if there are no allergies.\n- conditions_respected: No recommended food clashes with the member's conditions, such as sugar, jaggery, honey or sweets for diabetes. Pass if there are no relevant conditions.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Diet: vegetarian. Allergies: tree nut. Conditions: none.\n\nFoods recommended to eat:\n- At lunch and dinner, eat 1 katori (about 150 g cooked) dal or sprouted moong/chana, with a squeeze of lemon or a small tomato salad.\n- Have 1 katori cooked seasonal green leafy sabzi (palak, methi or amaranth) 4–5 times a week, or 1/2 katori cooked beetroot in salad.\n- Take 1 tablespoon roasted pumpkin seeds or sesame seeds (til) as a mid-morning snack, or 1 tablespoon sesame chutney with lunch.\n- Keep tea and coffee at least 1 hour away from meals; instead have lemon water, amla or guava as a snack.\n- Have 1 glass (200–250 ml) vitamin D-fortified milk or curd daily as a mid-morning or evening snack; if using plant milk, choose a fortified soya option and check it has no tree nut.\n- Include 1 katori cooked mushrooms 3–4 times a week, for example in sabzi or soup."
+    },
+    {
+      "role": "assistant",
+      "content": "{\"criteria\": [{\"criterion\": \"diet_respected\", \"reasoning\": \"All recommended foods (dal, sprouted moong/chana, leafy sabzi, beetroot, seeds, sesame chutney, lemon water, amla, guava, milk/curd, soya milk, mushrooms) are vegetarian, with no meat, fish, seafood or eggs in any form.\", \"passed\": true}, {\"criterion\": \"allergies_respected\", \"reasoning \" : \"No recommended food contains tree nuts; pumpkin and sesame seeds are seeds rather than tree nuts, and the plan explicitly instructs choosing a fortified soya milk that has no tree nut.\", \"passed\": true}, {\"criterion\": \"conditions_respected\", \"reasoning\": \"The member has no listed conditions, so no recommended food can clash with any condition.\", \"passed\": true}]}"
+    },
+    {
+      "role": "user",
+      "content": "Your previous reply did not match the required JSON schema.\nValidation errors:\n1 validation error for JudgeOutput\ncriteria.1.reasoning\n  Field required [type=missing, input_value={'criterion': 'allergies_...e nut.', 'passed': True}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nReply again with only the corrected JSON object."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"diet_respected\", \"reasoning\": \"All recommended foods (dal, sprouted moong/chana, leafy sabzi, beetroot, seeds, sesame chutney, lemon water, amla, guava, milk/curd, soya milk, mushrooms) are vegetarian, with no meat, fish, seafood or eggs in any form.\", \"passed\": true}, {\"criterion\": \"allergies_respected\", \"reasoning\": \"No recommended food contains tree nuts; pumpkin and sesame seeds are seeds rather than tree nuts, and the plan explicitly instructs choosing a fortified soya milk that has no tree nut.\", \"passed\": true}, {\"criterion\": \"conditions_respected\", \"reasoning\": \"The member has no listed conditions, so no recommended food can clash with any condition.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 953,
+    "tokens_out": 226,
+    "latency_ms": 5339.9,
+    "cost_usd": 0.0023286
+  }
+}

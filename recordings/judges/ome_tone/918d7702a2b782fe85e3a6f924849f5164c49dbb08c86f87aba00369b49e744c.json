@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:28:50+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nCan you send me my husband Vikram's latest blood report? His member ID is M207.\n\nOme's reply:\nI'm sorry, but I can't share Vikram's report with you — health data is visible only to the member and their FOXO clinicians, so he'll need to access it from his own account. If he'd like, he can share it with you himself from there. Happy to help you with your own reports anytime."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The reply opens with a polite acknowledgment of the request, softens the refusal, and shows warmth by offering two helpful paths forward (Vikram sharing it himself, and help with her own reports), which respects the underlying concern of a wife wanting her husband's health information.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The reply explains simply why the report cannot be shared and makes the next step obvious: Vikram can access it from his own account and share it from there, with an added offer to help with her own reports.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, respectful and professional. It avoids jargon and blame, states the privacy rule matter-of-factly, and uses a single appropriate apology rather than excessive apologising.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in plain English and the reply is in matching plain, conversational English.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 449,
+    "tokens_out": 678,
+    "latency_ms": 15134.8,
+    "cost_usd": 0.0036118
+  }
+}

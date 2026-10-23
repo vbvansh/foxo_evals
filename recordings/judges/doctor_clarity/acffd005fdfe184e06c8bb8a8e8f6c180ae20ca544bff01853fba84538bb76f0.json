@@ -1,0 +1,23 @@
+{
+  "agent": "judges/doctor_clarity",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:36:05+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review lab-result summaries written by FOXO's Doctor agent for a busy human clinician.\n\nYou will see the lab data the agent was given (abnormal results, sample quality issues, unreadable items) and the agent's summary and follow-ups. Judge how useful the summary is to the clinician. Do not judge medical correctness here; other checks cover that.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- leads_with_priority: The most important finding comes first. Critical values, if any, are stated before routine ones.\n- concise: A busy clinician can read the summary in under a minute. No padding, no repeated content.\n- actionable: The clinician can see what to do next (follow-ups, referrals or repeat tests).\n- flags_limitations: Sample quality issues and unreadable or missing results are mentioned when the lab data has them. Pass if there are none.\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Lab data given to the agent:\n- Abnormal results: creatinine 1.4 mg/dL (high), hba1c 7.4 % (high), glucose_fasting 138.0 mg/dL (high)\n- Sample quality issues: none\n- Unreadable items: none\n\nSummary for clinician:\n- Creatinine 1.4 mg/dL (high; ref 0.6–1.1) in a member on metformin 1000 mg — may suggest reduced renal function; needs clinical correlation and renal review before continuing the current metformin dose.\n- HbA1c 7.4 % (high; ref 4.0–5.6) and fasting glucose 138 mg/dL (high; ref 70–99) in a known type 2 diabetic — glycaemic control above target, needs clinical correlation.\n- Potassium 4.6 mmol/L is within range; no critical values reported.\n\nRecommended follow-ups:\n- Nephrology review of raised creatinine, including confirmation of kidney function before continuing the current metformin dose.\n- Endocrinology review of glycaemic control (HbA1c and fasting glucose)."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"leads_with_priority\", \"reasoning\": \"The summary opens with the creatinine elevation in the context of metformin use, which is the most safety-relevant finding, before moving to the glycemic results. It also explicitly notes that no critical values were reported, so nothing urgent is buried or omitted.\", \"passed\": true}, {\"criterion\": \"concise\", \"reasoning\": \"The whole summary plus follow-ups is roughly 150 words and can be read well under a minute. There is minor repetition (the metformin caution and 'needs clinical correlation' appear in both the findings and follow-ups), but it is not enough to create padding or bloat.\", \"passed\": true}, {\"criterion\": \"actionable\", \"reasoning\": \"Clear next steps are given: nephrology review with confirmation of kidney function before continuing the current metformin dose, and endocrinology review of glycemic control. The clinician knows exactly what to do with each abnormal result.\", \"passed\": true}, {\"criterion\": \"flags_limitations\", \"reasoning\": \"The lab data contains no sample quality issues and no unreadable or missing items, so this criterion passes by definition; nothing needed to be flagged.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 624,
+    "tokens_out": 1260,
+    "latency_ms": 20776.9,
+    "cost_usd": 0.0064176
+  }
+}

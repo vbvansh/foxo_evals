@@ -1,0 +1,23 @@
+{
+  "agent": "judges/ome_tone",
+  "prompt_version": "v1",
+  "model": "glm-5.3",
+  "recorded_at": "2026-10-23T10:35:13+00:00",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You review replies written by Ome, the member-facing assistant of FOXO, a premium preventive-health service in India.\n\nYou will see the member's message and Ome's reply. Judge only the tone and clarity of the reply, not its medical content. A short reply can pass every criterion.\n\nFor each criterion, first write one or two sentences of reasoning, then set passed to true or false.\n\nCriteria (use these ids exactly, one entry each):\n- empathetic: The reply acknowledges the member's situation or concern in a warm, human way.\n- clear: The reply is easy to understand and makes the next step obvious.\n- premium_tone: The tone fits a premium health service. It is calm, respectful and professional, with no jargon, no blame and no excessive apology.\n- language_match: The reply uses the same language and style as the member (English, Hindi or Hinglish).\n\nRespond with a single JSON object that matches this JSON schema:\n{\"$defs\": {\"CriterionVerdict\": {\"properties\": {\"criterion\": {\"title\": \"Criterion\", \"type\": \"string\"}, \"reasoning\": {\"title\": \"Reasoning\", \"type\": \"string\"}, \"passed\": {\"title\": \"Passed\", \"type\": \"boolean\"}}, \"required\": [\"criterion\", \"reasoning\", \"passed\"], \"title\": \"CriterionVerdict\", \"type\": \"object\"}}, \"properties\": {\"criteria\": {\"items\": {\"$ref\": \"#/$defs/CriterionVerdict\"}, \"title\": \"Criteria\", \"type\": \"array\"}}, \"required\": [\"criteria\"], \"title\": \"JudgeOutput\", \"type\": \"object\"}"
+    },
+    {
+      "role": "user",
+      "content": "Member's message:\nI want to book a full body checkup with a thyroid test for next week.\n\nOme's reply:\nSure, I can help you get started with a full body checkup that includes a thyroid test for next week. Just so you know, home sample collection slots are available from 6:00 AM to 11:00 AM, Monday to Saturday, and the phlebotomist arrives within your 30-minute booking window. Our booking team will reach out to confirm your preferred day and time."
+    }
+  ],
+  "response": "{\"criteria\": [{\"criterion\": \"empathetic\", \"reasoning\": \"The reply opens with a friendly, accommodating acknowledgment ('Sure, I can help you get started...') that directly recognizes the member's request. While the member expressed a task rather than a worry, the reply engages with it in a warm, helpful manner.\", \"passed\": true}, {\"criterion\": \"clear\", \"reasoning\": \"The reply is easy to follow: it confirms the requested checkup with thyroid test, states the available collection window, explains the 30-minute arrival window, and makes the next step obvious — the booking team will call to confirm the preferred day and time.\", \"passed\": true}, {\"criterion\": \"premium_tone\", \"reasoning\": \"The tone is calm, respectful and professional, with no blame or excessive apology. 'Phlebotomist' is a mildly technical term, but it is standard in diagnostic services and the surrounding language is plain and polished, so the overall tone still fits a premium service.\", \"passed\": true}, {\"criterion\": \"language_match\", \"reasoning\": \"The member wrote in plain English and the reply responds in the same plain, professional English style.\", \"passed\": true}]}",
+  "usage": {
+    "tokens_in": 460,
+    "tokens_out": 1117,
+    "latency_ms": 21722.9,
+    "cost_usd": 0.0055588
+  }
+}
